@@ -1,0 +1,500 @@
+ls -la
+cd ~
+ls -lR
+tree
+ls -la
+cd ~
+ls -la
+cd lab0/
+ls
+ls -la
+ls -laF
+cd elgyem3/
+ls -la
+rm kadabra/
+mkdir kadabra
+ls -la
+ls -laR
+ls -laF
+echo mismagius 
+cat mismagius 
+echo "Способности This is dummy text when pokemon does not\ncontain something. It is better than NPE!" > mismagius 
+cat mismagius 
+echo "Способности This is dummy text when pokemon does not/ncontain something. It is better than NPE!" > mismagius 
+cat mismagius 
+vim mismagius 
+echo "Способности This is dummy text when pokemon does not\ncontain something. It is better than NPE!" > mismagius 
+cat mismagius 
+vim mismagius 
+vim mismagius 
+echo mismagius 
+cat mismagius 
+ls -la
+echo -e "Способности This is dummy text when pokemon does not\ncontain something. It is better than NPE!" > mismagius 
+cat mismagius 
+echo -e "satk = 8 sdef=8\nspd=8"
+echo -e "satk = 8 sdef=8\nspd=8" > e
+cat feraligatr 
+cd ../
+ls
+cd krabby9/
+ls
+ls
+echo "Тип диеты Herbivore" > eevee 
+ls
+cat eevee 
+echo -e "Ходы  After You Aqua Tail\nAvalanche Block Body Slam Brine Counter Dive Double-Edge Drain Punch\n" > slowking 
+cat slowking 
+echo -e "Dynamicpunch Focus Punch Foul Play Fury Cutter Hidden Power# Ice Punch\n" >> slowking 
+echo -e "" >> slowking 
+echo -e "Icy Wind Iron Defense Iron Tail Magic Coat Mega Kick Mega Punch\n" >> slowking 
+echo -e "Mud-Slap Power Gem# Recycle Role Play Seismic Toss Signal Beam Skill\n" >> slowking 
+cat slowking 
+vim slowking 
+vim slowking 
+cat slowking 
+ls -la
+cd ../
+ls
+cd krabby9/
+ls
+cd ../
+echo "Тип диеты Herbivore" > piloswine8 
+echo -e "Способности Swarm Mach Speed Shield Dust\nCompoundeyes" > mothim8 
+cat mothim8 
+echo -e "Развитые\nспособности  Contrary" > snivy9 
+ls -la
+ls -laR
+ls -laF
+cd vigoroth3/
+ls
+echo -e "satk=7 sdef=3 spd=6" > horsea 
+echo -e "weight=166.7\nheight=63.0 atk=7 def=7" > hypno 
+ls
+ls
+cd ../
+ls
+cd ~
+ls
+ls -la
+vi .bash_history 
+cd lab0/
+ls
+ls -la
+cd ../
+ls
+vim .bash_history 
+vim .bash_history 
+exit
+vim .bash_history 
+64;93;17M64;93;17Mls
+:q
+ls
+cd lab0/
+chmod elgyem3 736
+chmod 736 elgyem3/
+ls -la
+cd elgyem3/
+ls
+chmod 004 mismagius 
+ls -la
+chmod 400 feraligatr 
+ls -la
+chmod -rwx-wx-wx kadabra/
+ls -la
+chmod drwx-wx-wx kadabra/
+chmod rwx-wx-wx kadabra/
+chmod u=rwx,g=wx,o=wx kadabra/
+ls -la
+cd ./
+cd ../
+ls
+chmod 357 krabby9/
+cd krabby9/
+ls -la
+ls
+sudo ls
+ls ../
+ls
+cd ../
+ls
+ls krabby9/
+chmod krabby9/777
+chmod 777 krabby9
+cd krabby9/
+;s
+ls
+chmod 315 chandelure/
+chmod 440 eevee 
+chmod 771 nidoranM
+chmod 440 slowking 
+ls
+cd ../
+chmod 777 krabby9
+chmod 357 krabby9/
+ls
+chmod 777 krabby9
+cd krabby9/
+ls -la
+chmod u=wx,g=x,o=w
+chmod u=wx,g=x,o=w roselia/
+cd ../
+chmod 357 krabby9/
+ls
+chmod mothim8 u=rw,g=w
+chmod u=rw,g=w mothim8 
+ls -la
+chmod 620
+chmod 620 mothim8 
+ls -la
+chmod 046 piloswine8 
+ls-la
+ls -la
+chmod u=wx,g=wx,o=rx vigoroth3/
+ls
+cd vigoroth3/
+ls
+cd ../
+chmod 777 vigoroth3
+cd vigoroth3/
+chmod 644 horsea 
+chmod 330 alakazam/
+chmod 755 grotle/
+chmod u=wx,g=wx,o=rx leafeon/ 
+ls -la
+chmod 620 hypno
+ls -la
+man cp
+cd ~/lab0/
+ls
+cp -R elgyem3/ elgyem3/kadabra/
+cd elgyem3/
+ls -la
+chmod mismagius 777
+chmod 777 mismagius 
+ls
+cd ../
+cp -R elgyem3/ elgyem3/kadabra/
+cd elgyem3/kadabra/
+ls
+rm mismagius 
+rm kadabra/
+rm -r kadabra/
+y
+rm feraligatr 
+y
+ls
+cd ../
+ls 
+ls -la
+chmod feraligatr 777
+chmod 777 feraligatr
+cd ../
+cp -R elgyem3/ elgyem3/kadabra/
+cd elgyem3/
+cd kadabra/
+;s
+ls
+rm -rf feraligatr 
+rm -rf kadabra/
+rm -rf mismagius 
+cd ~/lab0/
+ls
+cp -r elgyem3 lab0/elgyem3/kadabra/
+cp -r elgyem3 lab0/elgyem3/kadabra/
+cp -r elgyem3 elgyem3/kadabra/
+ls
+cd elgyem3/kadabra/
+ls
+cd elgyem3/
+ls
+cd ~/lab0/
+ls
+ln -s Copy_81 vigoroth3/
+ls
+ls -la
+ln -s vigoroth3 Copy_81
+ls
+ls -la
+man ln
+ln krabby9/eeveesnivy snivy9 
+ln snivy9 krabby9/eeveesnivy
+ls
+ls krabby9/
+ls
+ls -la 
+chmod 777 krabby9
+ls
+cd krabby9/
+ls
+ls -la
+cd eevee
+cd eeveesnivy 
+./eeveesnivy 
+cd ../
+ls
+ln -s mothim8 elgyem3/feraligatrmothmi
+cd elgyem3/
+ls -la
+mv feraligatrmothmi feraligatrmothim 
+cd ~/lab0/
+ls
+cat vigoroth3/horsea krabby9/slowking > snivy9_48
+cp mothim8 vigoroth3/horseamothim
+cp snivy9 vigoroth3/grotle
+cd vigoroth3/grotle/
+ls
+cd ~/lab0/
+man wc
+man he
+man head
+man gre
+man grep
+man sort
+man wc
+wc mothim8 
+ls -lR | grep "[^/]*8$" | :q
+ls -lR | grep "[^/]*8$"
+cd krabby9/
+ls
+ls -la
+cd ../
+cd vigoroth3/
+cd ../krabby9/
+ls
+ls -la
+chmod 777 roselia/
+chmod 777 cha
+chmod 777 chandelure/
+cd ../vigoroth3/
+ls -la
+chmod 777 alakazam/
+chmod 777 leafeon/
+ls
+cd ~/lab0/
+ls -lR | grep "[^/]*8$"
+ls
+ls -lR | grep "[^/]*8$"# Для roselia и chandel
+# Для roselia и chandelure
+chmod u=rwx,g=rx,o=rx roselia
+chmod u=rwx,g=rx,o=rx chandelure
+
+# Для leafeon и alakazam
+chmod u=rwx,g=rx,o=rx leafeon
+chmod u=rwx,g=rx,o=rx alakazam
+
+chmod u=rwx,g=rx,o=rx chandelure
+# Для leafeon и alakazam
+chmod u=rwx,g=rx,o=rx leafeon# Для roselia и chandelure
+chmod u=rwx,g=rx,o=rx roselia
+chmod u=rwx,g=rx,o=rx chandelure
+
+# Для leafeon и alakazam
+chmod u=rwx,g=rx,o=rx leafeon
+chmo
+# Для roselia и chandelure
+chmod u=rwx,g=rx,o=rx roselia
+chmod u=rwx,g=rx,o=rx chandelure
+
+# Для leafeon и alakazam
+chmod u=rwx,g=rx,o=rx leafeon
+chmod u=rwx,g=rx,o=rx alakazam
+
+ls# Для roselia и chandelure
+chmod u=rwx,g=rx,o=rx krabby9/roselia
+chmod u=rwx,g=rx,o=rx krabby9/chandelure
+# Для leafeon и alakazam
+chmod u=rwx,g=rx,o=rx vigoroth3/leafeon
+chmod u=rwx,g=rx,o=rx vigoroth3/alakazam
+cd vigoroth3/
+ls -la
+ls -lR | grep "[^/]*8$"
+ls -lR | grep "[^/]*8$"
+cd ~/lab0/
+ls -lR | grep "[^/]*8$"
+ls -lR | grep "[^/]*8$"
+ls -lR | grep "[^/]*8$" | sort -k1nr
+ls -lR | grep "[^/]*8$" | sort -k1nr
+ls -lR | grep "[^/]*8$" | sort -k5
+ls -lR | grep "[^/]*8$" | sort +k5
+ls -lR | grep "[^/]*8$" | sort -k5тк
+ls -lR | grep "[^/]*8$" | sort -k5nr
+cd vigoroth3/
+ls
+ls -la
+chmod u=wx,g=wx,o=rx leafeon 
+chmod 330 alakazam
+lsc -la
+ls -la
+cd ../
+cd krabby9/
+chmod 312 roselia/
+chmod 314 chandelure/
+cd ../
+ls -lR | grep "[^/]*8$" | sort -k5nr
+ls -lR 2>&1 |  grep -E '^(ls: |[^/]*8$)' |  sort -k5nr
+ls -lR | grep "[^/]*8$" | sort -k5nr
+ls -lR 2>&1 |  grep "^/*8$" |  sort -k5nr
+ls -lR 2>&1 |  grep "^/*8$" |  sort -k5nrls -lR 2>&1 | 
+grep -E ':[^:]*8$' |  # исправленное регулярное выражение
+sort -k5
+ls -lR 2>&1 |  grep "^/*8$" |  sort -k5nr
+ls -lR | grep "[^/]*8$" | sort -k5nr
+ls -lR 2>&1 |  grep -E ':[^:]*8$' |  # исправленное регулярное выражение
+sort -k5nr
+ls -lR | grep "[^/]*8$" | sort -k5nr
+(echo "Общее количество строк: $(ls -lR lab0 2>&1 | grep "^/*8$" | xargs -I{} wc -l {} | awk '{total += $1} END {print total}')";   ls -lR lab0 2>&1 | grep "^/*8$" | xargs -I{} sh -c 'echo "$(wc -l < "{}") {}"' | sort -k1nr)
+(echo "Общее количество строк: $(ls -lR lab0 2>&1 | grep "^/*8$" | xargs -I{} wc -l {} | awk '{total += $1} END {print total}')";   ls -lR lab0 2>&1 | grep "^/*8$" | xargs -I{} sh -c 'echo "$(wc -l < "{}") {}"' | sort -k1nr)
+cd krabby9/
+ls
+ls -l 
+ls -l | sort k8
+ls -l | sort k8nr
+ls -l | grep "[^/]*" |sort k8nr
+ls -l | grep "[^/]*" |sort k7nr
+ls -l | grep "[^/]*" |sort k6nr
+ls -l | grep "[^/]*" |sort k5nr
+ls -l | sort -k8
+ls -l | sort -k9
+ls -l | sort -k9nr
+ls krabby9 2> /tmp/access_errors.log | sort -r
+ls 2> /tmp/access_errors.log | sort -r
+ls -lR | grep "[^/]e*" > 1 | sort -k1
+ls -R lab0 |  grep '^e' |  xargs -I{} sh -c '
+    cat {} 2>/dev/null | 
+    nl | 
+    sort -k2r
+'
+ls -R |  grep '^e' |  xargs -I{} sh -c '
+    cat {} 2>/dev/null | 
+    nl | 
+    sort -k2r
+'
+ls -R lab0 |  grep '^e' |  while read file; do     cat "$file" 2>/dev/null |      nl |      sort -k2r; done
+ls -R |  grep '^e' |  while read file; do     cat "$file" 2>/dev/null |      nl |      sort -k2r; done
+ls -R 2>/dev/null |  grep '^e' |  while read file; do     cat "$file" 2>/dev/null |      nl 2>/dev/null |      sort -k2r 2>/dev/null; done 2>/dev/null
+ls -R 2>/dev/null |  grep '^e' |  while read file; do     cat "$file" 2>/dev/null |      nl 2>/dev/null |      sort -k2r 2>/dev/null; done 2>/dev/null
+ls -R 2>/dev/null |  grep '^e' |  while read file; do     cat "$file" 2>/dev/null |       2>/dev/null |      sort -k2r 2>/dev/null; done 2>/dev/null
+ls -R 2>/dev/null |  grep '^e' |  while read file; do     cat "$file" 2>/dev/null |      nl 2>/dev/null |      sort -k2r 2>/dev/null; done 2>/dev/null
+cd ../
+ls -lR | grep "ka*"
+ls -lR 2>/dev/null | grep "ka*"
+ls -lR 2>/dev/null | grep "ka*" |  q
+ls -lR 2>/dev/null | grep "ka*" | sort -k1
+ls -lR 2>/dev/null | grep "^ka*$" | sort -k1
+ls -lR 2>/dev/null | grep "^ka*$" 
+ls -lR  | grep "^ka*$" 
+ls -lR  | grep "ka*" 
+ls -lR 2>/dev/null |  grep "ka" |  sort -k5n |  head -n 2
+vim elgyem3/kadabra/
+ls -lR 2>/dev/null |  grep "ka" |  sort -k5n |  head -n 2
+ls -lR lab0 2>/dev/null |  grep '^[^t]' |  # пропускаем строки с "total"
+grep 'ka' |  awk '{print $5, $9}' |  sort -n |  head -n 2 |  awk '{print "Размер:", $1, "Файл:", $2}'
+ls -lR lab0 2>/dev/null |  grep '^[^t]' |  # пропускаем строки с "total"
+grep 'ka' |  awk '{print $5, $9}' |  sort -n |  head -n 2 |  awk '{print "Размер:", $1, "Файл:", $2}'
+ls -lR lab0 2>/dev/null |  awk '
+    /:/ {dir=$0; sub(/:.*/,"",dir)}
+    $1 ~ /^-/{  # проверяем, что это файл (начинается с "-")
+        if($9 ~ /ka/) {
+            print $5, dir "/" $9
+        }
+    }
+' |  sort -n |  head -n 2 |  awk '{print "Размер:", $1, "Файл:", $2}'
+ls -lR  | grep "ka*" 
+ls -lR 2>/dev/null |  grep "ka" |  sort -k5n |  head -n 2
+echo "visit later"
+ls -lR  | grep "e*" 
+ls -lR  | grep "e*" | sort -k1
+ls -lR  | grep "e*" | sort -k7
+ls -lr  | grep "e*" | sort -k7
+ls -lR | grep "e*" | sort -k7
+ls -lR | grep "e*" | sort -k
+exit
+ls
+vim .bash_history 
+exit
+jshell
+exit
+ls
+cd programming/lab1/
+ls
+java -jar main.jar 
+vim Main.java 
+javac Main.java 
+jar -c -f main.jar -e Main *.class
+java -jar main.jar 
+java -jar main.jar 
+vim Main.
+vim Main.java 
+javac Main.java 
+java Main
+vim Main.java 
+javac Main.java 
+jar -c -f main.jar -e Main *.class
+java -jar main.jar 
+exiy
+exit
+cd programming/lab1/
+ls
+exit
+cd programming/lab1/
+vim Main.java 
+clear
+vim Main.java 
+exit
+ls
+cd programming/lab1/
+ls
+java Main
+java -jar main.jar 
+clear
+jdb
+jdb main.jar 
+jdb Main.java
+clear
+java -jar main.jar :q
+clear
+java -jar main.jar :q
+exit
+cd programming/lab1/
+vim Main.java 
+vim Main.java 
+vim Main.java 
+clear
+vim Main.java exit
+exit
+clear
+cd programming/lab1/
+ls
+rm main.jar 
+jar -c -f main.jar -e Main *.class
+java -jar main.jar 
+mkdir tmp
+mv main.jar tmp/main.jar
+cd tmp/
+unzip main.jar 
+ls
+cd META-INF/
+ls
+cat MANIFEST.MF 
+cd ../
+rm main.jar 
+cd ./.
+cd ../
+ls
+jar -c -f main.jar *.class
+ls
+mv main.jar tmp/main.jar
+cd tmp/
+ls
+rm Main.class 
+rm -r META-INF/
+ls
+unzip main.jar 
+cd META-INF/
+ls
+vim MANIFEST.MF 
+vim MANIFEST.MF 
+vim .bash_history 
+ls
+exit

@@ -1,4 +1,8 @@
 num = input("Введите 7-значный код Хэмминга:   ")
+if len(num) != 7:
+    print("Число должно быть 7значно!")
+    exit()
+
 arr = [int(x) for x in num]
 
 s1 = arr[0]^arr[2]^arr[4]^arr[6]
