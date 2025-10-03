@@ -16,12 +16,12 @@ echo -e "Способности This is dummy text when pokemon does not\n conta
 echo -e "satk=8 sdef=8\nspd=8" > lab0/elgyem3/feraligatr
 
 # --- Files in lab0 ---
-echo -e "Способности Swarm Mach Speed Shield Dust\nCompoundeyes" > lab0/mothim8
+echo -e "Способности  Swarm Mach Speed Shield Dust\nCompoundeyes" > lab0/mothim8
 echo "Тип диеты Herbivore" > lab0/piloswine8
-echo -e "Развитые\nспособности Contrary" > lab0/snivy9
+echo -e "Развитые\nспособности  Contrary" > lab0/snivy9
 
 # --- Files in krabby9 ---
-echo "Тип диеты Herbivore" > lab0/krabby9/eevee
+echo "Тип диеты  Herbivore" > lab0/krabby9/eevee
 echo -e "Ходы After You Aqua Tail\nAvalanche Block Body Slam Brine Counter Dive Double-Edge Drain Punch\nDynamicpunch Focus Punch Foul Play Fury Cutter Hidden Power# Ice Punch\n Icy Wind Iron Defense Iron Tail Magic Coat Mega Kick Mega Punch\nMud-Slap Power Gem# Recycle Role Play Seismic Toss Signal Beam Skill\nSwap Sleep Talk Snore Swift Trick Wonder Room Zen\nHeadbutt" > lab0/krabby9/slowking
 
 # --- Files in vigoroth3 ---
@@ -33,7 +33,7 @@ echo "Section 2"
 # Permissions
 chmod a-rwx lab0/elgyem3
 chmod u+rwx,g+wx,o+rw lab0/elgyem3
-chmod u=r,g=,o=r lab0/elgyem3/mismagius
+chmod u=,g=,o=r lab0/elgyem3/mismagius
 chmod u=r,g=,o= lab0/elgyem3/feraligatr
 chmod u+rwx,g=wx,o=wx lab0/elgyem3/kadabra
 chmod 357 lab0/krabby9
@@ -58,8 +58,10 @@ chmod u=rw,g=w,o= lab0/vigoroth3/hypno
 # -------------- Section 3 --------------
 echo "Section 3"
 # 1
+chmod 777 lab0/elgyem3/mismagius
 cp -r lab0/elgyem3 lab0/elgyem3/kadabra
-
+chmod u=,g=,o=r lab0/elgyem3/mismagius
+chmod u=,g=,o=r lab0/elgyem3/kadabra/elgyem3/mismagius
 # 2
 ln -s lab0/vigoroth3 lab0/Copy_81
 
@@ -88,7 +90,7 @@ echo "4.2"
 chmod 777 lab0/krabby9 # Otherwise empty output
 mkdir lab0/tmp
 touch lab0/tmp/log.txt
-ls -lp lab0/krabby9 | grep -v / | sort -k9r 2>>lab0/tmp/log.txt
+(ls -lp lab0/krabby9 | grep -v / | sort -k9r) 2>>lab0/tmp/log.txt
 chmod 357 lab0/krabby9
 #3 
 echo "4.3"
@@ -97,13 +99,13 @@ grep -rh "" lab0 --include="e*" 2>/dev/null | sort -r
 chmod 357 lab0/krabby9
 #4
 echo "4.4"
-ls -lR lab0 2>/dev/null | grep "ka" | grep -v ":$"
-
-#1
-ls -lR lab0 | grep -v ":$"| grep " [e][^ ]*$" | sort -k8r
+ls -lR lab0 2>/dev/null | grep "ka" | grep -v ":$" | head -n 2
 #5
+echo "4.5"
+ls -lR lab0 | grep -v ":$"| grep " [e][^ ]*$" | sort -k8r
+#6
 echo "4.6"
-ls -lR lab0 2>>lab0/tmp/log.txt | grep -v ":$"| grep "a$" | sort -k8r
+ls -lR lab0 2>>lab0/tmp/log.txt | grep -v ":$"| grep "a$" | sort -k8r | tail -n 4
 
 # -------------- Section 5 --------------
 echo "Section 5"
