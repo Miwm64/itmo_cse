@@ -84,7 +84,7 @@ cp lab0/snivy9 lab0/vigoroth3/grotle
 echo "Section 4"
 #1
 echo "4.1"
-wc -l lab0/*[8] 2>&1
+wc -l lab0/*[8] 2>&1 | sort -k1nr
 #2
 echo "4.2"
 chmod 777 lab0/krabby9 # Otherwise empty output
@@ -99,13 +99,13 @@ grep -rh "" lab0 --include="e*" 2>/dev/null | sort -r
 chmod 357 lab0/krabby9
 #4
 echo "4.4"
-ls -lR lab0 2>/dev/null | grep "ka" | grep -v ":$" | head -n 2
+ls -lR lab0 2>/dev/null | grep "ka" | grep -v ":$" | sort -k5 |head -n 2
 #5
 echo "4.5"
 ls -lR lab0 | grep -v ":$"| grep " [e][^ ]*$" | sort -k8r
 #6
 echo "4.6"
-ls -lR lab0 2>>lab0/tmp/log.txt | grep -v ":$"| grep "a$" | sort -k8r | tail -n 4
+ls -lR lab0 2>>lab0/tmp/log.txt | grep -v / | grep -v ":$"| grep "a$" | sort -k8r | tail -n 4
 
 # -------------- Section 5 --------------
 echo "Section 5"
