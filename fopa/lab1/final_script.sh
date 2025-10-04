@@ -105,7 +105,8 @@ echo "4.5"
 ls -lR lab0 | grep -v ":$"| grep " [e][^ ]*$" | sort -k8r
 #6
 echo "4.6"
-ls -lR lab0 2>>lab0/tmp/log.txt | grep -v / | grep -v ":$"| grep "a$" | sort -k8r | tail -n 4
+ls -lpR lab0 2>>lab0/tmp/log.txt | grep -v / | grep -v ":$"| grep "a$" | sort -k8r | tail -n 4
+chmod 777 lab0/krabby9
 
 # -------------- Section 5 --------------
 echo "Section 5"
