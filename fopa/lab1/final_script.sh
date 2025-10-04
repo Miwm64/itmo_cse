@@ -112,6 +112,8 @@ echo "Section 5"
 rm lab0/snivy9
 rm -f lab0/elgyem3/mismagius
 rm lab0/elgyem3/feraligatrmoth*
+chmod 777 lab0/krabby9
 rm lab0/krabby9/eeveesni*
+chmod 357 lab0/krabby9
 rm -rf lab0/elgyem3
 rmdir lab0/krabby9/nidoranM
