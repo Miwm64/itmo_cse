@@ -1,4 +1,6 @@
 #!/bin/bash
-javac -cp .:Pokemon.jar Main.java
+javac -cp .:compiled/Pokemon.jar Main.java
+mv *.class compiled
+cd compiled
 java -cp .:Pokemon.jar Main
 

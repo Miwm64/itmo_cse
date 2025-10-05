@@ -9,7 +9,7 @@ public class EarthPower extends SpecialMove{
 		type = Type.GROUND;
 	}
 
-	protected java.lang.String describe(){
-		return "EarthPower";
+	protected String describe(){
+		return "uses EarthPower";
 	}	
 }
