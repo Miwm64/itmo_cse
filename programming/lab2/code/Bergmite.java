@@ -12,7 +12,7 @@ public class Bergmite extends Pokemon{
 	}
 
 	private void init(){
-		AddType(Type.ICE);
+		setType(Type.ICE);
 		setMove(new DoubleEdge(), new IceFang(), new Facade());
 		evolution_init();
 	}

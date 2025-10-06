@@ -1,12 +1,12 @@
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
 
-public class Landorus extends Pokemon{
-	public Landorus(){
+public class Avalugg extends Pokemon{
+	public Avalugg(){
 		init();
 	}
 
-	public Landorus(String name, int level){
+	public Avalugg(String name, int level){
 		super(name, level);
 		init();
 }
