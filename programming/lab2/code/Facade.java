@@ -11,15 +11,18 @@ public class Facade extends PhysicalMove{
 		power = 70;
 		type = Type.NORMAL;
 	}
-	
+
+	@Override	
 	protected String describe(){
 		return "uses Facade";
 	}
 	
+	@Override
 	protected void applyOppDamage(Pokemon def, double damage){
 		Status cond = def.getCondition();
 		if (cond == Status.POISON || cond == Status.PARALYZE){
 			damage *= 2;
+			System.out.println("Power is doubled due to status factor");
 		}
 		def.setMod(Stat.HP, (int) Math.round(damage));
 	}

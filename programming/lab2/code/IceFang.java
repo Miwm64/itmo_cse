@@ -13,11 +13,13 @@ public class IceFang extends PhysicalMove{
 		power = 65;
 		type = Type.ICE;
 	}
-	
+
+	@Override	
 	protected String describe(){
 		return "uses IceFang";
 	}
 	
+	@Override
 	protected void applyOppEffects(Pokemon p){		
 		Random random = new Random();
 		double freeze_chance = random.nextFloat();

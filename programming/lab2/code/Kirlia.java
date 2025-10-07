@@ -1,19 +1,21 @@
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
+import java.util.Arrays;
 
-public class Kirlia extends Pokemon{
+
+public class Kirlia extends Ralts{
 	public Kirlia(){
-		init();
+		super();	
 	}
 
 	public Kirlia(String name, int level){
 		super(name, level);
-		init();
-}
+	}
 
-	private void init(){
+	@Override	
+	protected void evolution_init(){
 		setStats(38, 35, 35, 65, 55, 50);
-		setType(Type.PSYCHIC, Type.FAIRY);
-		setMove(new CalmMind(), new Rest(), new DrainingKiss());
+		addType(Type.FAIRY);
+		addMove(new DrainingKiss());
 	}
 }

@@ -1,5 +1,7 @@
 import ru.ifmo.se.pokemon.Pokemon;
 import ru.ifmo.se.pokemon.Type;
+import java.util.Arrays;
+
 
 public class Ralts extends Pokemon{
 	public Ralts(){
@@ -9,11 +11,16 @@ public class Ralts extends Pokemon{
 	public Ralts(String name, int level){
 		super(name, level);
 		init();
-}
+	}
 
-	private void init(){
-		setStats(28, 25, 25, 45, 35, 40);
-		setType(Type.PSYCHIC, Type.FAIRY);
+	public void init(){	
+		setType(Type.PSYCHIC);
 		setMove(new CalmMind(), new Rest());
+		evolution_init();
+	}
+
+	protected void evolution_init(){
+		addType(Type.FAIRY);
+		setStats(28, 25, 25, 45, 35, 40);
 	}
 }

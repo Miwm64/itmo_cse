@@ -11,10 +11,12 @@ public class RockTomb extends PhysicalMove{
 		type = Type.ROCK;
 	}
 	
+	@Override
 	protected String describe(){
 		return "uses RockTomb";
 	}
-	
+
+	@Override
 	protected void applyOppEffects(Pokemon p){
 		p.setMod(Stat.SPEED, -1);
 

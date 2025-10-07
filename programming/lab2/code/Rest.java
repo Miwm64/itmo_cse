@@ -10,17 +10,16 @@ public class Rest extends StatusMove{
 		accuracy = 1;
 	}
 	
+	@Override
 	protected String describe(){
-		return "uses Sleep";
+		return "uses Rest";
 	}
 
-//	public final void attack(Pokemon att, Pokemon def){
-//		applySelfEffects(att);	
-//	}
-
+	@Override
 	protected void applySelfEffects(Pokemon p){
 		p.restore();
-		Effect e = new Effect().chance(1).turns(1).condition(Status.SLEEP);
+		System.out.println("Health restored");
+		Effect e = new Effect().chance(1).turns(2).condition(Status.SLEEP);
 		e.attack(0);
 		p.setCondition(e);
 

@@ -8,7 +8,8 @@ public class BrutalSwing extends PhysicalMove{
 		power = 60;
 		type = Type.DARK;
 	}
-	
+
+	@Override
 	protected String describe(){
 		return "uses BrutalSwing";
 	}

@@ -9,10 +9,12 @@ public class Confide extends StatusMove{
 		type = Type.NORMAL;
 	}
 	
+	@Override	
 	protected String describe(){
 		return "uses Confide";
 	}
 
+	@Override
 	protected void applyOppEffects(Pokemon p){
 		p.setMod(Stat.SPECIAL_ATTACK, -1);
 	}

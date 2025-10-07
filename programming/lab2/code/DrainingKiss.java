@@ -11,16 +11,19 @@ public class DrainingKiss extends SpecialMove{
 		power = 50;
 		type = Type.FAIRY;
 	}
-	
+
+	@Override	
 	protected String describe(){
 		return "uses DrainingKiss";
 	}
-
+	
+	@Override
 	protected void applyOppDamage(Pokemon def, double damage){
 		def.setMod(Stat.HP, (int) Math.round(damage));
 		damage_dealt = (int) Math.round(damage);
 	}
 
+	@Override
 	protected void applySelfDamage(Pokemon att, double damage){
 		att.setMod(Stat.HP, -Math.abs((int) Math.round(damage_dealt*0.75)));
 		damage_dealt = 0;

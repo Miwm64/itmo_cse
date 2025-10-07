@@ -11,16 +11,19 @@ public class DoubleEdge extends PhysicalMove{
 		power = 100;
 		type = Type.NORMAL;
 	}
-	
+
+	@Override	
 	protected String describe(){
 		return "uses DoubleEdge";
 	}
 
+	@Override
 	protected void applyOppDamage(Pokemon def, double damage){
 		def.setMod(Stat.HP, (int) Math.round(damage));
 		damage_dealt = (int) Math.round(damage);
 	}
 
+	@Override
 	protected void applySelfDamage(Pokemon att, double damage){
 		att.setMod(Stat.HP, Math.abs((int) Math.round(damage_dealt/3.0)));
 		damage_dealt = 0;

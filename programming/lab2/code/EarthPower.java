@@ -8,7 +8,8 @@ public class EarthPower extends SpecialMove{
 		power = 90;
 		type = Type.GROUND;
 	}
-
+	
+	@Override
 	protected String describe(){
 		return "uses EarthPower";
 	}	
