@@ -1,3 +1,8 @@
+# Author = Mikhail Konstantinovich Dobkes
+# Group = P3106
+# Date = 10.10.2025
+# Assignment variant = 3
+
 import re
 
 VOWELS = "АОЭЕУЁЮЯИЫаеёиоуыэюя"
@@ -6,15 +11,15 @@ LETTERS = "А-Яа-яЁёa-zA-Z"
 MY_GROUP = "P3106"
 
 def solve(s):
-    r = rf"([{LETTERS}-]*) ([а-яА-яёЁ]).([а-яА-яёЁ]). ([A-Z][0-9]*)"
+    r = rf"([{LETTERS}-]*)\s+([а-яА-яёЁ]).([а-яА-яёЁ]).\s+([A-Z][0-9]*)"
     m = re.findall(r, s)
     res = ""
     for line in m:
         if not(line[3] == MY_GROUP and line[1] == line[2]):
             res += f"{line[0]} {line[1]}.{line[2]}. {line[3]}\n"
-    print("Answer:\n"+res)
+    print("Result:\n"+res)
 
-test1 = "Петров-Петров П.П. P0000\nАнищенко А.А. P33133313\nПетров-Петров П.П. P0000\nИванов И.И. P0000"
+test1 = "Петров-Петров П.П. P3106\nАнищенко А.А. P33133313\nПетров-Петров П.П. P0000\nИванов И.И. P0000"
 test2 = formatted_names = """Аруко А.Б. P3106
 Бахеткин А.В. P3106
 Гатин Р.Р. P3106

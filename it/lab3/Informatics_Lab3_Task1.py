@@ -1,3 +1,7 @@
+# Author = Mikhail Konstantinovich Dobkes
+# Group = P3106
+# Date = 10.10.2025
+# Assignment variant = 5
 import re
 
 VOWELS = "АОЭЕУЁЮЯИЫаеёиоуыэюя"
@@ -18,13 +22,15 @@ def solve(s):
         if match and match.group(2).strip() != "":
             m.append(match.groups())
 
+    print("Result:")
+    if len(m) == 0:
+        print()
+        return
     for i, x in enumerate(m):
         if x[1].strip() == "":
             continue
         print(x[0]+(", " if i != len(m)-1 else ""), end="")
-    print()
-
-    # print("".join(x + (", " if i != len(m)-1 else "") for i,x in enumerate(m)))
+    print("\n")
 
 test1 = "Кривошеее существо гуляет по парку"
 test2 = "Яичный ккккк"
