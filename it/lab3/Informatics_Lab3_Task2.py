@@ -15,7 +15,7 @@ def solve(s):
     m = re.findall(r, s)
     res = ""
     for line in m:
-        if not(line[3] == MY_GROUP and line[1] == line[2]):
+        if not(line[3] == MY_GROUP and line[1] == line[2] and line [0] == line[1]):
             res += f"{line[0]} {line[1]}.{line[2]}. {line[3]}\n"
     print("Result:\n"+res)
 
