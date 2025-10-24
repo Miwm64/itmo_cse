@@ -30,14 +30,6 @@
 <block-scalar> ::= <block-style> <line-end> <indented-content>
 <block-style> ::= "|" | ">"  (* literal | folded *)
 <indented-content> ::= <indent> <line-content> <line-end> <indented-content> | ""
-
-# BASIC TOKENS (missing from your original)
-<letter> ::= [A-Za-z]
-<digit> ::= [0-9]
-<space> ::= " "
-<indent> ::= <space>+
-<line-end> ::= "\n" | "\r\n" | "\r"
-<line-content> ::= [^\r\n]*
 '''
 
 def count_indents(s: str):
@@ -51,6 +43,36 @@ def find_pos(s: str, char: str):
         return 10**4
     else:
         return s.find(char)
+
+def get_scalar(line: str):
+    if line[0] in '"':
+        addition = line.strip()[1:-1]
+        addition = addition.replace('\\n', '\n')
+        addition = addition.replace('\\t', '\t')
+        addition = addition.replace('\\r', '\r')      
+        addition = addition.replace('\\"', '"')
+        addition = addition.replace('\\\\', '\\')     
+    elif line[0] in "'":
+        addition = line.strip()[1:-1]
+    else:
+        addition = line.strip()[0:]
+    
+
+    if addition.lower() in ["false", "true"]:
+        return addition.lower() == "true"
+    elif addition == "null":
+        return None
+    if line.count("'")+line.count('"') == 0:
+        try:
+            return(int(addition))
+        except:
+            try:
+                return(float(addition))
+            except:
+                return(addition)
+    else:
+        return(addition)
+
 
 # Check last line errors
 # [start_index, end_index]
@@ -80,46 +102,14 @@ def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
                 pass # TODO fix
 
 
-            
+            # Basic case - just character
             else:
                 left = 0
                 addition = ""
                 while line[left] in " -":
                     left += 1
-                if line[left] in '"':
-                    # Double quotes - process escape sequences
-                    addition = line.strip()[left+1:-1]
-                    addition = addition.replace('\\n', '\n')      # Newline
-                    addition = addition.replace('\\t', '\t')      # Tab
-                    addition = addition.replace('\\r', '\r')      # Carriage return
-                    addition = addition.replace('\\"', '"')       # Escaped double quote
-                    addition = addition.replace('\\\\', '\\')     # Escaped backslash
-                elif line[left] in "'":
-                    # Single quotes - treat everything literally (standard YAML)
-                    addition = line.strip()[left+1:-1]
-                    # Only replace escaped single quote
-                    addition = addition.replace("''", "'") 
-                else:
-                    addition = line.strip()[left:]
+                struct.append(get_scalar(line[left:]))
                 
-
-                if addition.lower() in ["false", "true"]:
-                    struct.append(addition == "true")
-                    continue
-                elif addition == "null":
-                    struct.append(None)
-                    continue
-                if line.count("'")+line.count('"') == 0:
-                    try:
-                        struct.append(int(addition))
-                    except:
-                        try:
-                            struct.append(float(addition))
-                        except:
-                            struct.append(addition)
-                else:
-                    struct.append(addition)
-
 
 
                 
