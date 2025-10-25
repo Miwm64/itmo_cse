@@ -32,6 +32,8 @@
 <indented-content> ::= <indent> <line-content> <line-end> <indented-content> | ""
 '''
 
+#TODO comments? #
+
 def count_indents(s: str):
     amount = 0
     while s[amount] == " ":
@@ -43,8 +45,34 @@ def find_pos(s: str, char: str):
         return 10**4
     else:
         return s.find(char)
+def parse_block_scalar(content, curr_index, indent_level):
+    """Parse block scalar starting at current line"""
+    line = content[curr_index]
+    block_type = "|" if find_pos(line, "|") < find_pos(line, ">") else ">"
+    
+    block_content = []
+    curr_index += 1 
+    
+    while curr_index < len(content):
+        next_line = content[curr_index]
+        next_indent = count_indents(next_line)
+        
+        if next_indent <= indent_level:
+            break
+            
+        block_content.append(next_line[next_indent:])
+        curr_index += 1
+    
+    if block_type == "|":
+        result = "\n".join(block_content)
+    else:  # ">" 
+        result = " ".join(line.strip() for line in block_content)
+    
+    return result, curr_index - 1  # Return to last processed line
 
-def get_scalar(line: str):
+def parse_scalar(line: str):
+    addition = ""
+    quoted = line[0] in "'\""
     if line[0] in '"':
         addition = line.strip()[1:-1]
         addition = addition.replace('\\n', '\n')
@@ -58,7 +86,7 @@ def get_scalar(line: str):
         addition = line.strip()[0:]
     
 
-    if addition.lower() in ["false", "true"]:
+    if addition.lower() in ["false", "true"] and not quoted:
         return addition.lower() == "true"
     elif addition == "null":
         return None
@@ -74,49 +102,119 @@ def get_scalar(line: str):
         return(addition)
 
 
+
+
 # Check last line errors
 # [start_index, end_index]
 def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
     struct = None
     curr_index = start_index
-    if content[curr_index].strip() == "---":
-        curr_index += 1
     
-    if content[curr_index].strip()[0] == "-":
+    if content[curr_index].strip()[0] == "-" and (content[curr_index].strip() == "-" or content[curr_index].strip()[1] == " "):
         struct = []
         while curr_index < len(content):
             line = content[curr_index]
-            curr_index += 1
+            if content[curr_index].strip() == "---":
+                curr_index += 1
+                continue
+            if content[curr_index].strip()[0] == "#":
+                curr_index += 1
+                continue
             if count_indents(line) > indent_level:
+                curr_index += 1
                 continue
             if count_indents(line) < indent_level:
+                curr_index += 1
                 break
 
-            if min(find_pos(line, ":"),
-                find_pos(line, ">")) < min(
-                    find_pos(line, "'"), find_pos(line, '"')) or line.strip() == "-":
-                pass # TODO fix
-            elif min(find_pos(line, "|"), 
-                    find_pos(line, ">")) < min(
-                    find_pos(line, "'"), find_pos(line, '"')):
-                pass # TODO fix
 
+            if (find_pos(line, ":") < min(find_pos(line, "'"), find_pos(line, '"')) or 
+                line.strip() == "-" or 
+                (line.strip().startswith("-") and line.replace("-", "", 1).strip().startswith("-"))):
+                if (line.strip() == "-" and curr_index == len(content)-1):
+                    struct.append(None)
+                elif curr_index != len(content)-1 and count_indents(content[curr_index+1]) <= indent_level and line.strip() == "-":
+                    struct.append(None)
+                elif line.count(":"):
+                    if line.replace("-"," ", 1).strip() != "":
+                        content_copy = content
+                        content_copy[curr_index] = content_copy[curr_index].replace("-", " ", 1)
+                        struct.append(yaml_to_struct(content_copy, curr_index, 
+                                                    count_indents(content_copy[curr_index])))
+                elif curr_index != len(content)-1 and content[curr_index+1].count(":"):
+                    struct.append(yaml_to_struct(content, curr_index+1, 
+                                                 count_indents(content[curr_index+1])))
+                else:
+                    if line.replace("-"," ", 1).strip() != "":
+                        content_copy = content
+                        content_copy[curr_index] = content_copy[curr_index].replace("-", " ", 1)
+                        struct.append(yaml_to_struct(content_copy, curr_index, 
+                                                    count_indents(content_copy[curr_index])))
+                    else:
+                        struct.append(yaml_to_struct(content, curr_index+1, 
+                                                    count_indents(content[curr_index+1])))
+                
+                    
+            elif min(find_pos(line, "|"), find_pos(line, ">")) < min(find_pos(line, "'"), find_pos(line, '"')):
+                block_value, curr_index = parse_block_scalar(content, curr_index, indent_level)
+                struct.append(block_value)
 
             # Basic case - just character
             else:
                 left = 0
-                addition = ""
                 while line[left] in " -":
                     left += 1
-                struct.append(get_scalar(line[left:]))
+                if line[left-1] != " ":
+                    left += 1
+                struct.append(parse_scalar(line[left:]))
                 
-
-
-                
-        return struct
+            curr_index += 1
+    elif content[curr_index].strip()[0] == "-":
+        return parse_scalar(content[curr_index].strip())
     else:
         struct = {}
-    
+        while curr_index < len(content):
+                line = content[curr_index]
+
+                if content[curr_index].strip() == "---":
+                    curr_index += 1
+                    continue
+                if content[curr_index].strip()[0] == "#":
+                    curr_index += 1
+                    continue
+                if count_indents(line) > indent_level:
+                    curr_index += 1
+                    continue
+                if count_indents(line) < indent_level:
+                    curr_index += 1
+                    break
+
+                key = line.split(":")[0].strip()
+                value = line[indent_level+len(key)+1:]
+
+                if value.strip() == "":
+                    if curr_index == len(content)-1 or count_indents(content[curr_index+1]) <= indent_level:
+                        struct[key] = None
+                    
+                    else:
+                        struct[key] = yaml_to_struct(content, curr_index+1, 
+                                                    count_indents(content[curr_index+1]))
+                    
+                        
+                elif min(find_pos(line, "|"), find_pos(line, ">")) < min(find_pos(line, "'"), find_pos(line, '"')):
+                    block_value, curr_index = parse_block_scalar(content, curr_index, indent_level)
+                    struct[key] = (block_value)
+
+                # Basic case - just character
+                else:
+                    left = 0
+                    while value[left] in " -":
+                        left += 1
+                    if left != 0 and value[left-1] != " ":
+                        left -= 1
+                    struct[key] = (parse_scalar(value[left:]))
+                    
+                curr_index += 1
 
     
 
@@ -133,7 +231,7 @@ def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
 
 
 
-with open("test1.yaml") as f:
+with open("input.yaml") as f:
     example = f.readlines()
     res = yaml_to_struct(example)
     print(res)

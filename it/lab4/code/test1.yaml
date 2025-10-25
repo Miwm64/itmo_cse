@@ -1,0 +1,22 @@
+- "hi \n"
+- 'hi \n'
+- "12"
+- a 2
+- 12
+- 12.2
+- true
+- false
+- null
+-
+   - 1
+   - 2
+   - - 1
+     - 2
+- >
+  This is a folded
+  string where newlines
+  become spaces
+- |
+  This is a folded
+  string where newlines
+  become spaces
