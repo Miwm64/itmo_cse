@@ -1,4 +1,4 @@
-from main import yaml_to_struct, delete_comments
+from main import yaml_filepath_to_struct
 
 
 def struct_to_hcl(struct):
@@ -55,9 +55,6 @@ def struct_to_hcl_worker(struct, curr_tabs = 0, add_tabs = True):
     return res
 
 if __name__ == '__main__':
-    with open("input.yaml") as f:
-        example = f.readlines()
-        example = delete_comments(example)
-        res = yaml_to_struct(example)
-        # print(struct_to_hcl(res))
-        open("output.hcl", "w").write(struct_to_hcl(res))
+    struct = yaml_filepath_to_struct("input.yaml")
+    with open("output_add1.hcl", "w") as f:
+        f.write(struct_to_hcl(struct))

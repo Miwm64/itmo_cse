@@ -1,6 +1,6 @@
 from tkinter.font import names
 
-from main import yaml_to_struct, delete_comments
+from main import yaml_to_struct_worker, delete_comments
 
 
 def struct_to_xml(struct, root_name="root"):
@@ -39,7 +39,7 @@ if __name__ == '__main__':
     with open("input.yaml") as f:
         content = f.readlines()
         content = delete_comments(content)
-    struct = yaml_to_struct(content)
+    struct = yaml_to_struct_worker(content)
     res = struct_to_xml(struct)
     with open("output.xml", "w") as f:
         f.write(res)

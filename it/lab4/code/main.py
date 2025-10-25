@@ -32,7 +32,6 @@
 <indented-content> ::= <indent> <line-content> <line-end> <indented-content> | ""
 '''
 
-#TODO comments? #
 
 def count_indents(s: str):
     amount = 0
@@ -125,20 +124,35 @@ def delete_comments(arr: list[str]) -> list[str]:
         result.append(line.rstrip())
     return result
 
-# Check last line errors
+def yaml_filepath_to_struct(filepath: str):
+    with open(filepath) as f:
+        return yaml_to_struct(f.readlines())
+
+
+def yaml_str_to_struct(s: str):
+    content = s.split("\n")
+    return yaml_to_struct(content)
+
+def yaml_to_struct(content: list[str]):
+    content = delete_comments(content)
+    return yaml_to_struct_worker(content)
+
+
 # [start_index, end_index]
-def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
+# Worker function, don't call
+def yaml_to_struct_worker(content: list[str], start_index = 0, indent_level = 0):
     struct = None
     curr_index = start_index
     
-    if content[curr_index].strip()[0] == "-" and (content[curr_index].strip() == "-" or content[curr_index].strip()[1] == " "):
+    if content[curr_index].strip()[0] == "-" and (content[curr_index].strip() == "-" 
+                                                  or content[curr_index].strip()[1] == " "):
         struct = []
         while curr_index < len(content):
             line = content[curr_index]
             if content[curr_index].strip() == "---":
                 curr_index += 1
                 continue
-            if content[curr_index].strip()[0] == "#":
+            if content[curr_index].strip()[0] == "#": # TODO is needed?
                 curr_index += 1
                 continue
             if count_indents(line) > indent_level:
@@ -160,20 +174,20 @@ def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
                     if line.replace("-"," ", 1).strip() != "":
                         content_copy = content
                         content_copy[curr_index] = content_copy[curr_index].replace("-", " ", 1)
-                        struct.append(yaml_to_struct(content_copy, curr_index,
-                                                    count_indents(content_copy[curr_index])))
+                        struct.append(yaml_to_struct_worker(content_copy, curr_index,
+                                                            count_indents(content_copy[curr_index])))
                 elif curr_index != len(content)-1 and content[curr_index+1].count(":"):
-                    struct.append(yaml_to_struct(content, curr_index+1,
-                                                 count_indents(content[curr_index+1])))
+                    struct.append(yaml_to_struct_worker(content, curr_index + 1,
+                                                        count_indents(content[curr_index+1])))
                 else:
                     if line.replace("-"," ", 1).strip() != "":
                         content_copy = content
                         content_copy[curr_index] = content_copy[curr_index].replace("-", " ", 1)
-                        struct.append(yaml_to_struct(content_copy, curr_index,
-                                                    count_indents(content_copy[curr_index])))
+                        struct.append(yaml_to_struct_worker(content_copy, curr_index,
+                                                            count_indents(content_copy[curr_index])))
                     else:
-                        struct.append(yaml_to_struct(content, curr_index+1,
-                                                    count_indents(content[curr_index+1])))
+                        struct.append(yaml_to_struct_worker(content, curr_index + 1,
+                                                            count_indents(content[curr_index+1])))
                 
                     
             elif min(find_pos(line, "|"), find_pos(line, ">")) < min(find_pos(line, "'"), find_pos(line, '"')):
@@ -218,8 +232,8 @@ def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
                         struct[key] = None
                     
                     else:
-                        struct[key] = yaml_to_struct(content, curr_index+1,
-                                                    count_indents(content[curr_index+1]))
+                        struct[key] = yaml_to_struct_worker(content, curr_index + 1,
+                                                            count_indents(content[curr_index+1]))
                     
                         
                 elif min(find_pos(line, "|"), find_pos(line, ">")) < min(find_pos(line, "'"), find_pos(line, '"')):
@@ -238,14 +252,7 @@ def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
                 curr_index += 1
     return struct
 
-    
-
-
-
 
 if __name__ == '__main__':
-    with open("input.yaml") as f:
-        example = f.readlines()
-        example = delete_comments(example)
-        res = yaml_to_struct(example)
-        print(res)
+    struct = yaml_filepath_to_struct("input.yaml")
+    print(struct)
