@@ -45,8 +45,8 @@ def find_pos(s: str, char: str):
         return 10**4
     else:
         return s.find(char)
+
 def parse_block_scalar(content, curr_index, indent_level):
-    """Parse block scalar starting at current line"""
     line = content[curr_index]
     block_type = "|" if find_pos(line, "|") < find_pos(line, ">") else ">"
     
@@ -69,6 +69,8 @@ def parse_block_scalar(content, curr_index, indent_level):
         result = " ".join(line.strip() for line in block_content)
     
     return result, curr_index - 1  # Return to last processed line
+
+
 
 def parse_scalar(line: str):
     addition = ""
@@ -103,6 +105,25 @@ def parse_scalar(line: str):
 
 
 
+def delete_comments(arr: list[str]) -> list[str]:
+    def find_all_indexes(s: str, ch: str) -> list[int]:
+        return [i for i, c in enumerate(s) if c == ch]
+
+    result = []
+    for line in arr:
+        quotes = sorted(find_all_indexes(line, "'") + find_all_indexes(line, '"'))
+        comment_index = line.find('#')
+        if comment_index != -1:
+            # check if comment_index lies inside any quoted range
+            inside_quote = False
+            for i in range(0, len(quotes), 2):
+                if i + 1 < len(quotes) and quotes[i] < comment_index < quotes[i + 1]:
+                    inside_quote = True
+                    break
+            if not inside_quote:
+                line = line[:comment_index]
+        result.append(line.rstrip())
+    return result
 
 # Check last line errors
 # [start_index, end_index]
@@ -139,19 +160,19 @@ def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
                     if line.replace("-"," ", 1).strip() != "":
                         content_copy = content
                         content_copy[curr_index] = content_copy[curr_index].replace("-", " ", 1)
-                        struct.append(yaml_to_struct(content_copy, curr_index, 
+                        struct.append(yaml_to_struct(content_copy, curr_index,
                                                     count_indents(content_copy[curr_index])))
                 elif curr_index != len(content)-1 and content[curr_index+1].count(":"):
-                    struct.append(yaml_to_struct(content, curr_index+1, 
+                    struct.append(yaml_to_struct(content, curr_index+1,
                                                  count_indents(content[curr_index+1])))
                 else:
                     if line.replace("-"," ", 1).strip() != "":
                         content_copy = content
                         content_copy[curr_index] = content_copy[curr_index].replace("-", " ", 1)
-                        struct.append(yaml_to_struct(content_copy, curr_index, 
+                        struct.append(yaml_to_struct(content_copy, curr_index,
                                                     count_indents(content_copy[curr_index])))
                     else:
-                        struct.append(yaml_to_struct(content, curr_index+1, 
+                        struct.append(yaml_to_struct(content, curr_index+1,
                                                     count_indents(content[curr_index+1])))
                 
                     
@@ -197,7 +218,7 @@ def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
                         struct[key] = None
                     
                     else:
-                        struct[key] = yaml_to_struct(content, curr_index+1, 
+                        struct[key] = yaml_to_struct(content, curr_index+1,
                                                     count_indents(content[curr_index+1]))
                     
                         
@@ -215,23 +236,16 @@ def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
                     struct[key] = (parse_scalar(value[left:]))
                     
                 curr_index += 1
-
-    
-
-
-            
-        
-
     return struct
 
     
 
-            
-    
+
 
 
 
 with open("input.yaml") as f:
     example = f.readlines()
+    example = delete_comments(example)
     res = yaml_to_struct(example)
     print(res)
