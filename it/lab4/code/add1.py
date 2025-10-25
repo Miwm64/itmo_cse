@@ -1,8 +1,5 @@
 from main import yaml_to_struct, delete_comments
 
-# extra_line
-# true not True
-# null or None?
 
 def struct_to_hcl(struct):
     return "data = " + struct_to_hcl_worker(struct)
@@ -21,6 +18,10 @@ def struct_to_hcl_worker(struct, curr_tabs = 0, add_tabs = True):
             else:
                 if type(val) == str:
                     res += ("\t"*(curr_tabs+1)) + f'"{str(val)}"' + ( ",\n" if printed + 1 != len(struct) else "")
+                elif type(val) == bool:
+                    res += ("\t"*(curr_tabs+1)) + f'{str(val).lower()}' + ( ",\n" if printed + 1 != len(struct) else "")
+                elif val is None:
+                    pass
                 else:
                     res += ("\t"*(curr_tabs+1)) + str(val) + ( ",\n" if printed + 1 != len(struct) else "")
             printed += 1
@@ -33,22 +34,28 @@ def struct_to_hcl_worker(struct, curr_tabs = 0, add_tabs = True):
 
         printed = 0
         for key, val in struct.items():
+            if val is None:
+                continue
             res += ("\t"*(curr_tabs+1) + str(key) + " = ")
             if type(val) in [dict, list]:
                 res += struct_to_hcl_worker(val, curr_tabs + 1, False)
             else:
                 if type(val) == str:
-                    res += f'"{str(val)}"' + ( ",\n" if printed + 1 != len(struct) else "\n")
+                    res += f'"{str(val)}"' + ( "\n" if printed + 1 != len(struct) else "\n")
+                elif type(val) == bool:
+                    res += f'{str(val).lower()}' + ( "\n" if printed + 1 != len(struct) else "\n")
+                elif val is None:
+                    pass
                 else:
-                    res += str(val) + (",\n" if printed + 1 != len(struct) else "\n")
+                    res += str(val) + ("\n" if printed + 1 != len(struct) else "\n")
 
-        res = res + "\t"*curr_tabs + "}"
+        res = res + "\t"*curr_tabs + "}\n"
 
 
     return res
 
 if __name__ == '__main__':
-    with open("test2.yaml") as f:
+    with open("input.yaml") as f:
         example = f.readlines()
         example = delete_comments(example)
         res = yaml_to_struct(example)
