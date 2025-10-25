@@ -243,9 +243,9 @@ def yaml_to_struct(content: list[str], start_index = 0, indent_level = 0):
 
 
 
-
-with open("input.yaml") as f:
-    example = f.readlines()
-    example = delete_comments(example)
-    res = yaml_to_struct(example)
-    print(res)
+if __name__ == '__main__':
+    with open("input.yaml") as f:
+        example = f.readlines()
+        example = delete_comments(example)
+        res = yaml_to_struct(example)
+        print(res)
