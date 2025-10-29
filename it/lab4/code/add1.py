@@ -1,10 +1,10 @@
 from main import yaml_filepath_to_struct
 
 
-def struct_to_hcl(struct):
+def struct_to_hcl(struct) -> str:
     return "data = " + struct_to_hcl_worker(struct)
 
-def struct_to_hcl_worker(struct, curr_tabs = 0, add_tabs = True):
+def struct_to_hcl_worker(struct, curr_tabs = 0, add_tabs = True) -> str:
     res = ""
     if type(struct) == list:
         if add_tabs:
