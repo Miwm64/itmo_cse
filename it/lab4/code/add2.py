@@ -1,10 +1,12 @@
 import yaml
-import json
+import hcl2
 
-def yaml_to_hcl(s: str):
+def yaml_to_hcl(s: str) -> str:
     content = yaml.load(s, Loader=yaml.Loader)
-    data = "data = " + json.dumps(content, indent=4, ensure_ascii=False)
+    tree = hcl2.reverse_transform({"data": content})
+    data = hcl2.writes(tree)
     return data
+
 
 if __name__ == '__main__':
     text = ""
