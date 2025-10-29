@@ -3,10 +3,10 @@ from tkinter.font import names
 from main import yaml_to_struct_worker, delete_comments
 
 
-def struct_to_xml(struct, root_name="root"):
+def struct_to_xml(struct, root_name="root") -> str:
     return f"<{root_name}>\n{struct_to_xml_worker(struct, 1)}</{root_name}>\n"
 
-def struct_to_xml_worker(struct, curr_tabs=0):
+def struct_to_xml_worker(struct, curr_tabs=0) -> str:
     tab = "\t" * curr_tabs
     res = ""
 
