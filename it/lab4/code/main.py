@@ -32,8 +32,9 @@
 <indented-content> ::= <indent> <line-content> <line-end> <indented-content> | ""
 '''
 
+#TODO json
 
-def count_indents(s: str):
+def count_indents(s: str) -> int:
     amount = 0
     while s[amount] == " ":
         amount += 1
@@ -45,7 +46,7 @@ def find_pos(s: str, char: str):
     else:
         return s.find(char)
 
-def parse_block_scalar(content, curr_index, indent_level):
+def parse_block_scalar(content, curr_index, indent_level) -> str:
     line = content[curr_index]
     block_type = "|" if find_pos(line, "|") < find_pos(line, ">") else ">"
     
@@ -71,7 +72,7 @@ def parse_block_scalar(content, curr_index, indent_level):
 
 
 
-def parse_scalar(line: str):
+def parse_scalar(line: str) -> str:
     addition = ""
     quoted = line[0] in "'\""
     if line[0] in '"':
@@ -124,23 +125,23 @@ def delete_comments(arr: list[str]) -> list[str]:
         result.append(line.rstrip())
     return result
 
-def yaml_filepath_to_struct(filepath: str):
+def yaml_filepath_to_struct(filepath: str) -> dict or list:
     with open(filepath) as f:
         return yaml_to_struct(f.readlines())
 
 
-def yaml_str_to_struct(s: str):
+def yaml_str_to_struct(s: str) -> dict or list:
     content = s.split("\n")
     return yaml_to_struct(content)
 
-def yaml_to_struct(content: list[str]):
+def yaml_to_struct(content: list[str]) -> dict or list:
     content = delete_comments(content)
     return yaml_to_struct_worker(content)
 
 
 # [start_index, end_index]
 # Worker function, don't call
-def yaml_to_struct_worker(content: list[str], start_index = 0, indent_level = 0):
+def yaml_to_struct_worker(content: list[str], start_index = 0, indent_level = 0) -> dict or list:
     struct = None
     curr_index = start_index
     
