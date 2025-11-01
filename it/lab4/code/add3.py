@@ -41,5 +41,5 @@ if __name__ == '__main__':
         content = delete_comments(content)
     struct = yaml_to_struct_worker(content)
     res = struct_to_xml(struct)
-    with open("output.xml", "w") as f:
+    with open("output_add_3.xml", "w") as f:
         f.write(res)
