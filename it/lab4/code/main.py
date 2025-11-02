@@ -32,7 +32,6 @@
 <indented-content> ::= <indent> <line-content> <line-end> <indented-content> | ""
 '''
 
-#TODO json
 
 def count_indents(s: str) -> int:
     amount = 0
@@ -153,7 +152,7 @@ def yaml_to_struct_worker(content: list[str], start_index = 0, indent_level = 0)
             if content[curr_index].strip() == "---":
                 curr_index += 1
                 continue
-            if content[curr_index].strip()[0] == "#": # TODO is needed?
+            if content[curr_index].strip()[0] == "#":
                 curr_index += 1
                 continue
             if count_indents(line) > indent_level:
