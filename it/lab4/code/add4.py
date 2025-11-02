@@ -10,7 +10,7 @@ def check_speed(input, funcs):
     for i in range(100):
         res = input
         for func in funcs:
-            res = func(input)
+            res = func(res)
     end = time.time()
     return end - start
 
