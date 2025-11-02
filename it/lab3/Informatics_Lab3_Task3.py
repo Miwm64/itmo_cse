@@ -8,14 +8,28 @@ import re
 ENDINGS = r"юю|ья|ыя|ым|ими|ыми|их|ых|ого|его|ому|ему|ом|ем|ую|ая|яя|ое|ее|ый|ий|ой|ые|ие|ов|ев|ыхов|ихев"
 FIND_REGEX = rf"\b([^ !.,-?\n\t\r]+)({ENDINGS})\b.*?(?=\1({ENDINGS})\b)"
 
-def solve(s):
-    m = re.findall(FIND_REGEX, s, re.IGNORECASE)
-    roots = set()
+def solve(s, n=2):
+    m = []
+    for match_start in re.finditer(r'\b', s):
+        i = match_start.start()
+        match = re.match(FIND_REGEX, s[i:])
+        if match and match.group(2).strip() != "":
+            m.append(match.groups())
+
+    roots = []
     roots_endings = []
+    done_roots = set()
     for (root, ending1, ending2) in m:
-        if root not in roots:
-            roots.add(root.lower())
+        roots.append(root.lower())
+        if n == 1 and not done_roots.__contains__(root.lower()):
+            roots_endings.append((root, ending1))
+            done_roots.add(root.lower())
+        elif n == 2 and not done_roots.__contains__(root.lower()):
             roots_endings.append((root, ending2))
+            done_roots.add(root.lower())
+        elif roots.count(root) == n and not done_roots.__contains__(root.lower()):
+            roots_endings.append((root, ending2))
+            done_roots.add(root.lower())
     for (root, ending2) in roots_endings:
         s = re.sub(rf"\b({root})([^ \n\t\r!.,-?]+)\b", rf"\1{ending2}", s, flags = re.IGNORECASE)
     print(f"Result:\n{s}\n")
@@ -25,6 +39,10 @@ def solve(s):
 '''
 Tests
 '''
+
+test = "Футбольный футбольная европейского футбольных европейских"
+solve(test)
+
 test1 = "Футбольный клуб «Реал Мадрид» является 15-кратным обладателем главного футбольного европейского трофея – Лиги Чемпионов. Данный турнир организован Союзом европейских футбольных ассоциаций (УЕФА). Идея о континентальном футбольном турнире пришла к журналисту Габриэлю Ано в 1955 году."
 test2 = "Прилагательное прилагательные прилагательный прилагательная"
 test3 = "Машины проезжают по дороге и останавливаются на светофоре."
@@ -40,11 +58,11 @@ test5 = """В учебном пособии рассматриваются ос�
 кафедре вычислительной техники, а также на многих кафедрах ИТМО и ряда
 других университетов. За 25 лет описания в [2,3] устарели и возникла
 необходимость их переработки и издания этого учебного пособия, в которое
-включены из [2] отредактированные разделы по Базовой ЭВМ. 
+включены из [2] отредактированные разделы по Базовой ЭВМ.
 """
 
-solve(test1)
-solve(test2)
-solve(test3)
-solve(test4)
-solve(test5)
+solve(test1, 2)
+solve(test2, 2)
+solve(test3, 2)
+solve(test4, 2)
+solve(test5, 2)

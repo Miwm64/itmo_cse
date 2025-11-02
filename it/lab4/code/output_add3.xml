@@ -1,0 +1,125 @@
+<root>
+	<item>
+		<even_week>true</even_week>
+		<day>Суббота</day>
+		<schedule>
+			<item>
+				<lesson>Информатика (Лаб)</lesson>
+				<type>Лабораторная</type>
+				<cohort>ИНФОРМ (Р3106) 1.1</cohort>
+				<teacher>
+					<name>Балакшин Павел Валерьевич</name>
+					<id>125598</id>
+				</teacher>
+				<time>
+					<start_time>11:30</start_time>
+					<end_time>13:00</end_time>
+				</time>
+				<location>
+					<address>Кронверкский пр., д.49, лит.А</address>
+					<auditory>ауд. 1333</auditory>
+				</location>
+				<format>Очно - дистанционный</format>
+				<weeks>
+					<item>2</item>
+					<item>4</item>
+					<item>6</item>
+					<item>8</item>
+					<item>10</item>
+					<item>12</item>
+					<item>14</item>
+					<item>16</item>
+				</weeks>
+			</item>
+			<item>
+				<lesson>Информатика (Лаб)</lesson>
+				<type>Лабораторная</type>
+				<cohort>ИНФОРМ (Р3106) 1.1</cohort>
+				<teacher>
+					<name>Балакшин Павел Валерьевич</name>
+					<id>125598</id>
+				</teacher>
+				<time>
+					<start_time>13:30</start_time>
+					<end_time>15:00</end_time>
+				</time>
+				<location>
+					<address>Кронверкский пр., д.49, лит.А</address>
+					<auditory>ауд. 1333</auditory>
+				</location>
+				<format>Очно - дистанционный</format>
+				<weeks>
+					<item>2</item>
+					<item>4</item>
+					<item>6</item>
+					<item>8</item>
+					<item>10</item>
+					<item>12</item>
+					<item>14</item>
+					<item>16</item>
+				</weeks>
+			</item>
+		</schedule>
+	</item>
+	<item>
+		<even_week>true</even_week>
+		<day>Понедельник</day>
+		<schedule>
+			<item>
+				<lesson>Основы дискретной математики (базовый уровень) (Лек)</lesson>
+				<type>Лекция</type>
+				<cohort>ОДМ баз 1</cohort>
+				<teacher>
+					<name>Поляков Владимир Иванович</name>
+					<id>100054</id>
+				</teacher>
+				<time>
+					<start_time>09:50</start_time>
+					<end_time>11:20</end_time>
+				</time>
+				<location>
+					<address>Кронверкский пр., д.49, лит.А</address>
+					<auditory>ауд. 2337</auditory>
+				</location>
+				<format>Очно - дистанционный</format>
+			</item>
+			<item>
+				<lesson>Основы дискретной математики (базовый уровень) (Прак)</lesson>
+				<type>Практика</type>
+				<cohort>ОДМ баз 1.1</cohort>
+				<teacher>
+					<name>Поляков Владимир Иванович</name>
+					<id>100054</id>
+				</teacher>
+				<time>
+					<start_time>11:30</start_time>
+					<end_time>13:00</end_time>
+				</time>
+				<location>
+					<address>Кронверкский пр., д.49, лит.А</address>
+					<auditory>ауд. 2337</auditory>
+				</location>
+				<format>Очно - дистанционный</format>
+				<weeks>
+					<item>1</item>
+					<item>2</item>
+					<item>3</item>
+					<item>4</item>
+					<item>5</item>
+					<item>6</item>
+					<item>7</item>
+					<item>8</item>
+					<item>9</item>
+					<item>10</item>
+					<item>11</item>
+					<item>12</item>
+					<item>13</item>
+					<item>14</item>
+					<item>15</item>
+					<item>16</item>
+					<item>17</item>
+				</weeks>
+			</item>
+		</schedule>
+	</item>
+</root>
