@@ -26,7 +26,6 @@ def struct_to_hcl_worker(struct, curr_tabs=0, add_tabs=True) -> str:
         res += ("{\n" if not add_tabs else indent + "{\n")
         items = [(k, v) for k, v in struct.items() if v is not None]
         for i, (key, val) in enumerate(items):
-            comma = ""
             res += tab * (curr_tabs + 1) + f"{key} = "
             if isinstance(val, (dict, list)):
                 res += struct_to_hcl_worker(val, curr_tabs + 1, False).rstrip() + "\n"
