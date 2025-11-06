@@ -1,4 +1,6 @@
 import time
+from copy import deepcopy
+
 from add1 import struct_to_hcl
 from add2 import yaml_to_hcl
 from add3 import struct_to_xml
@@ -8,7 +10,7 @@ from main import yaml_str_to_struct
 def check_speed(input, funcs):
     start  = time.time()
     for i in range(100):
-        res = input
+        res = deepcopy(input)
         for func in funcs:
             res = func(res)
     end = time.time()
