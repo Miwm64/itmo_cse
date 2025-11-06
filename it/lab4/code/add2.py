@@ -17,9 +17,4 @@ def yaml_to_hcl_filepath(filepath: str) -> str:
     return data
 
 if __name__ == '__main__':
-    text = ""
-    with open("input.yaml", "r") as f:
-        text = f.read()
-    with open("output_add2.hcl", "w") as f:
-        d = yaml_to_hcl(text)
-        f.write(d)
+    print(yaml_to_hcl_filepath("input.yaml"))
