@@ -135,6 +135,8 @@ def yaml_str_to_struct(s: str) -> dict or list:
 
 
 def yaml_to_struct(content: list[str]) -> dict or list:
+    if content == []:
+        return None
     content = delete_comments(content)
     return yaml_to_struct_worker(content)
 
