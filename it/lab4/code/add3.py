@@ -1,4 +1,4 @@
-from main import yaml_to_struct_worker, delete_comments
+from main import yaml_to_struct, delete_comments
 
 
 def struct_to_xml(struct, root_name="root") -> str:
@@ -37,7 +37,7 @@ if __name__ == '__main__':
     with open("input.yaml") as f:
         content = f.readlines()
         content = delete_comments(content)
-    struct = yaml_to_struct_worker(content)
+    struct = yaml_to_struct(content)
     res = struct_to_xml(struct)
     with open("output_add3.xml", "w") as f:
         f.write(res)
