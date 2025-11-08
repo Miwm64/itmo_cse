@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <root>
 	<item>
 		<even_week>true</even_week>
@@ -8,7 +9,7 @@
 				<type>Лабораторная</type>
 				<cohort>ИНФОРМ (Р3106) 1.1</cohort>
 				<teacher>
-					<name>Балакшин Павел Валерьевич</name>
+					<name></name>
 					<id>125598</id>
 				</teacher>
 				<time>
