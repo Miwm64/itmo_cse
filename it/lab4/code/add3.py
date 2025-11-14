@@ -2,7 +2,8 @@ from main import yaml_to_struct, delete_comments
 
 
 def struct_to_xml(struct, root_name="root") -> str:
-    return f"<{root_name}>\n{struct_to_xml_worker(struct, 1)}</{root_name}>\n"
+    schema = '<?xml version="1.0" encoding="UTF-8"?>'
+    return f"{schema}\n<{root_name}>\n{struct_to_xml_worker(struct, 1)}</{root_name}>\n"
 
 def struct_to_xml_worker(struct, curr_tabs=0) -> str:
     tab = "\t" * curr_tabs
