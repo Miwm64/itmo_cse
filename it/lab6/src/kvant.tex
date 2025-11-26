@@ -1,0 +1,59 @@
+\documentclass[8pt]{article}
+
+\usepackage{graphicx}
+\usepackage{geometry}
+\geometry{a4paper, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
+
+\usepackage{subfiles}
+\usepackage{multicol}
+\usepackage[utf8]{inputenc} 
+\usepackage[russian]{babel}
+\usepackage{setspace}
+
+\title{Lab6}
+\author{Mike Dobkes}
+\date{6th of December 2025}
+
+\begin{document}
+\begin{minipage}[t][20cm][t]{\textwidth} % height = 10cm
+\onehalfspacing
+\begin{multicols}{2} % Main part
+
+% Initial chapter
+{
+\raggedright
+\textbf{\chapter{Ответы, указания, решения}}\newline
+\noindent\rule{\columnwidth}{1pt}
+}
+\setlength{\parindent}{1em} % Restore tab before 1st line of paragraph 
+\subfile{introduction}
+
+% Trojan chapter
+{
+\raggedright
+\textbf{\chapter{К статье «Троянцы»}}
+}
+\setlength{\parindent}{1em} % Restore tab before 1st line of paragraph
+\subfile{trojans}
+
+% Artillery and math chapter
+{
+\raggedright
+\textbf{\chapter{К статье «Артиллерия и математика»}}
+}
+\setlength{\parindent}{1em} % Restore tab before 1st line of paragraph
+\subfile{artillery_and_math}
+
+%Antie chapter
+{
+\raggedright
+\textbf{\chapter{К статье «Антье»}}
+}
+\setlength{\parindent}{1em} % Restore tab before 1st line of paragraph
+\subfile{antie}
+
+\end{multicols}
+\subfile{pic}
+
+\end{minipage}
+\end{document}
