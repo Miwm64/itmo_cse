@@ -1,13 +1,16 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36" version="29.1.0">
   <diagram name="Страница-1" id="KXQcD6soPmy9UPtJQ55O">
-    <mxGraphModel dx="8170" dy="4073" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+    <mxGraphModel dx="3281" dy="1457" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="hoO72sCaAlAxPQLgPmPK-6" edge="1" parent="1" source="f7XlnR5mRMaI8UjC3vhM-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=diamond;endFill=1;" target="f7XlnR5mRMaI8UjC3vhM-45">
+        <mxCell id="hoO72sCaAlAxPQLgPmPK-6" edge="1" parent="1" source="f7XlnR5mRMaI8UjC3vhM-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;endArrow=diamond;endFill=1;exitX=1;exitY=0.375;exitDx=0;exitDy=0;exitPerimeter=0;" target="f7XlnR5mRMaI8UjC3vhM-45">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="1128" y="-13" />
+              <mxPoint x="982" y="-15" />
+              <mxPoint x="1214" y="-15" />
+              <mxPoint x="1214" y="-13" />
+              <mxPoint x="1214" y="-13" />
             </Array>
           </mxGeometry>
         </mxCell>
@@ -21,7 +24,7 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="f7XlnR5mRMaI8UjC3vhM-6" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Human" vertex="1">
-          <mxGeometry height="885" width="492" x="490" y="-218" as="geometry" />
+          <mxGeometry height="893" width="492" x="490" y="-218" as="geometry" />
         </mxCell>
         <mxCell id="f7XlnR5mRMaI8UjC3vhM-7" parent="f7XlnR5mRMaI8UjC3vhM-6" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="- knownHumans: ArrayList&amp;lt;Human&amp;gt;&lt;br&gt;- equipments: ArrayList&amp;lt;Equipment&amp;gt;&lt;br&gt;- faction: FactionType&lt;br&gt;&lt;div&gt;- name: Name&lt;/div&gt;&lt;div&gt;- backpack: Backpack&lt;/div&gt;&lt;div&gt;- exhaustion: double&lt;/div&gt;&lt;div&gt;- eyesOpened: boolean&lt;/div&gt;&lt;div&gt;- onMove: boolean&lt;/div&gt;&lt;div&gt;- expression: HumanFaceExpression&lt;/div&gt;" vertex="1">
           <mxGeometry height="184" width="492" y="26" as="geometry" />
@@ -30,7 +33,7 @@
           <mxGeometry height="8" width="492" y="210" as="geometry" />
         </mxCell>
         <mxCell id="f7XlnR5mRMaI8UjC3vhM-9" parent="f7XlnR5mRMaI8UjC3vhM-6" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ stumble(fall: boolean): void&lt;div&gt;+ sit(): void&lt;br&gt;&lt;div&gt;&lt;div&gt;+ closeEyes(): void&lt;/div&gt;&lt;div&gt;+ openEyes(): void&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;+ recognize(otherHuman: Human): double&lt;/div&gt;&lt;div&gt;+ interact(object: WorldObject): void&lt;br&gt;+ interact(type: HumanInteractionType, otherHuman: Human): void&lt;div&gt;&lt;div&gt;+ talk(text: String, connotation: String): void&lt;/div&gt;&lt;div&gt;+ realize(text: String): void&lt;/div&gt;&lt;div&gt;+ realize(text: String, expression: HumanFaceExpression): void&lt;/div&gt;&lt;div&gt;+ remember(fact: String): void&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;+ study(object: WorldObject, thought: string): void&lt;/span&gt;&lt;/div&gt;&lt;div&gt;+ worry(type: ArrayList&amp;lt;WorryType&amp;gt;): void&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;&lt;div&gt;+getKnownHumans(): ArrayList&amp;lt;Human&amp;gt;&lt;/div&gt;&lt;div&gt;+getEquipments(): ArrayList&amp;lt;Equipment&amp;gt;&lt;/div&gt;&lt;div&gt;+getFaction(): FactionType&lt;/div&gt;&lt;div&gt;+getExpression(): HumanFaceExpression&lt;/div&gt;&lt;div&gt;+getName(): Name&lt;/div&gt;&lt;div&gt;+getBackpack(): Backpack&lt;/div&gt;&lt;div&gt;+getExhaustion(): double&lt;/div&gt;&lt;div&gt;+isEyesOpened(): boolean&lt;/div&gt;&lt;div&gt;+ isOnMove(): boolean&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+setKnownHumans(knownHumans: ArrayList&amp;lt;Human&amp;gt;): void&lt;/div&gt;&lt;div&gt;+setEquipments(equipments: ArrayList&amp;lt;Equipment&amp;gt;): void&lt;/div&gt;&lt;div&gt;+setFaction(faction: FactionType): void&lt;/div&gt;&lt;div&gt;&lt;div&gt;+setExpression(expression HumanFaceExpression): void&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+setName(name: Name): void&lt;/div&gt;&lt;div&gt;+setBackpack(backpack: Backpack): void&lt;/div&gt;&lt;div&gt;+setExhaustion(exhaustion: double): void&lt;/div&gt;&lt;div&gt;+setEyesOpened(eyesOpened: boolean): void&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div&gt;+ setOnMove(val: boolean): void&lt;/div&gt;" vertex="1">
-          <mxGeometry height="667" width="492" y="218" as="geometry" />
+          <mxGeometry height="675" width="492" y="218" as="geometry" />
         </mxCell>
         <mxCell id="hoO72sCaAlAxPQLgPmPK-19" edge="1" parent="1" source="f7XlnR5mRMaI8UjC3vhM-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.25;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;dashed=1;" target="hoO72sCaAlAxPQLgPmPK-15">
           <mxGeometry relative="1" as="geometry" />
@@ -48,7 +51,7 @@
           <mxGeometry height="168" width="302" y="113" as="geometry" />
         </mxCell>
         <mxCell id="f7XlnR5mRMaI8UjC3vhM-45" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" value="Name" vertex="1">
-          <mxGeometry height="140" width="371" x="1030" y="65" as="geometry" />
+          <mxGeometry height="140" width="371" x="1028" y="87" as="geometry" />
         </mxCell>
         <mxCell id="f7XlnR5mRMaI8UjC3vhM-46" parent="f7XlnR5mRMaI8UjC3vhM-45" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" value="+ firstName: String&lt;br&gt;+ middleName: String&lt;br&gt;+ lastName: String&lt;br&gt;+ nicknames: ArrayList&amp;lt;String&amp;gt;" vertex="1">
           <mxGeometry height="114" width="371" y="26" as="geometry" />
