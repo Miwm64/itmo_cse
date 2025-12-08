@@ -2,7 +2,6 @@ They divided the meager spoils from the camp in makeshift backpacks
 and started down the mountain in the grey mist of morning. Cordelia led
 Dubauer by the hand and helped him when he stumbled. She was not sure
 how clearly he recognized her, but he clung to her and avoided Vorkosigan.
-++++
 The forest grew thicker and the trees taller as they went down.
 Vorkosigan hacked through the undergrowth with his knife for a while, then
 they took to the stream bed. Splashes of sunlight began to filter through the
@@ -36,4 +35,15 @@ Betan.
 annexed by military force for command of its wormhole clusters. The ruling
 senate surrendered on terms, and were murdered immediately after.
 
-Rename to camelCase!!!!!
+
+
+
+
+
+
+engage problem:
+lead by hand
+help
+avoid
+clung
++ engageWith(type: HumanInteractionType, otherHuman: Human): void
