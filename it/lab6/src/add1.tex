@@ -1,0 +1,158 @@
+\documentclass[8pt]{article}
+\usepackage{geometry}
+\geometry{a4paper, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
+\usepackage{tikz}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[russian]{babel}
+
+\title{Lab6}
+\author{Mike Dobkes}
+\date{6th of December 2025}
+
+\begin{document}
+
+\newcommand{\mytriangleone}[1][1]{
+\begin{tikzpicture}[scale=#1]
+\fill[yellow] (0,0) -- (0.5,1.4) node[above]{\textcolor{black}{A}} -- (1,0);
+\fill[yellow] (0.5,-0.1) parabola (0,0) node[left]{\textcolor{black}{C}};
+\fill[yellow] (0.5,-0.1) parabola (1,0) node[right]{\textcolor{black}{B}} -- (0,0) ;
+\end{tikzpicture}
+}
+
+\newcommand{\mytriangletwo}[1][1]{
+\begin{tikzpicture}[scale=#1]
+\fill[black] (0,0) node[left]{F} -- (0.5, 1.4) node[above]{D} -- (0.8,-0.1) node[right]{E} parabola (0,0);
+\end{tikzpicture}
+}
+
+\newcommand{\myline}[5]{
+\begin{tikzpicture}[scale=#1]
+\draw[line width=#2, #3] (0,0) node[above]{\textcolor{black}{#4}} -- (1,0) node[above]{\textcolor{black}{#5}};
+\end{tikzpicture}
+}
+
+\newcommand{\mygianttriangleone}[1][1]{
+\begin{tikzpicture}[scale=#1]
+\fill[orange] (2, 5) -- (1.6, 4) parabola (1.9, 3.9) parabola (2.275, 4) -- (2,5);
+\fill[orange] (1.9, 3.9) parabola (1.6, 4) -- (2, 5) -- (1.9, 3.9);
+\draw[red, line width=2] (0,0) -- (2,5);
+\draw[blue, line width=2] (2,5) -- (3,1.5);
+\draw[black, line width=2] (3,1.5) -- (0,0);
+\end{tikzpicture}
+}
+
+\newcommand{\mygianttriangletwo}[1][1]{
+\begin{tikzpicture}[scale=#1]
+\fill[black] (2, 6) -- (1.6, 4.8) parabola (1.9, 4.6) parabola (2.125, 4.7) -- (2,6);
+\fill[black] (1.9, 4.6) parabola (1.6, 4.8) -- (2, 6) -- (1.9, 4.9);
+\draw[red, line width=2] (0,0) -- (2,6);
+\draw[blue, line width=2] (2,6) -- (2.5,2);
+\draw[yellow, line width=2] (2.5,2) -- (0,0);
+\end{tikzpicture}
+}
+
+\newcommand{\mydots}[1][1]{
+\begin{tikzpicture}[scale=#1]
+    \fill (0,5) circle (10pt);
+    \fill (1,6) circle (10pt);
+    \fill (2,5) circle (10pt);
+\end{tikzpicture}
+}
+
+
+
+\begin{figure}[h!]
+\centering
+
+\begin{minipage}{0.62\textwidth}
+    {\Large КНИГА I ПРЕДЛ. XXV. ТЕОРЕМА} \hfill 49
+    \vspace{1em}
+
+    \begin{minipage}{0.18\textwidth}
+        \includegraphics[width=\linewidth]{e_letter.png}
+    \end{minipage}
+    \begin{minipage}{0.79\textwidth}
+    \textit{
+        сли у двух треугольников две стороны
+        \myline{0.8}{2}{blue}{A}{C}
+        и
+        \myline{0.8}{2}{orange}{B}{C}
+        соответственно равны двум сторонам
+        \myline{0.8}{2}{blue}{D}{F}
+        и
+        \myline{0.8}{2}{orange}{E}{F}
+        другого, но основания неравны, то угол над большим основанием
+        \myline{0.8}{2}{black}{C}{B}
+        одного треугольника меньше угла под меньшим
+        \myline{0.8}{2}{yellow}{F}{E}
+        другого.
+    }
+    \end{minipage}
+
+    \vspace{1em}
+    \centering
+    \(
+        \mytriangleone[0.5] \quad =,\; >\;\) или \(< \quad \mytriangletwo[0.5]
+    \)
+
+    \vspace{0.5em}
+
+    \(
+        \mytriangleone[0.5] \quad\) не равен,\( \quad \mytriangletwo[0.5]
+    \)
+
+    \vspace{0.5em}
+
+    Поскольку если
+    \mytriangleone[0.5] =
+    \mytriangletwo[0.5],
+    то \newline
+    \myline{0.8}{2}{black}{C}{B}
+    =
+    \myline{0.8}{1}{orange}{F}{E}
+    (пр. I.\textsubscript{4}),\newline
+    что противоречит гипотезе;
+
+    \vspace{1em}
+
+    \mytriangleone[0.5]
+    не меньше
+    \mytriangletwo[0.5],
+
+    Поскольку если
+    \mytriangleone[1] <
+    \mytriangletwo[1],\newline
+    то
+    \myline{0.8}{2}{black}{C}{B}
+    <
+    \myline{0.8}{1}{orange}{F}{E},
+    (пр. I.\textsubscript{24}),\newline
+    что противоречит гипотезе.
+
+    \vspace{1em}
+    \mydots[0.1]
+    \mytriangleone[1]
+    >
+    \mytriangletwo[1]
+
+
+    \vspace{2em}
+
+    \hfill ч. т. д.
+
+\end{minipage}
+\hfill
+\begin{minipage}{0.36\textwidth}
+    \centering
+    \mygianttriangleone[1.3]
+
+    \vspace{2em}
+
+    \mygianttriangletwo[1.3]
+\end{minipage}
+
+\end{figure}
+
+
+\end{document}

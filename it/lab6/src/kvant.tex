@@ -1,55 +1,58 @@
 \documentclass[8pt]{article}
-
 \usepackage{graphicx}
 \usepackage{geometry}
 \geometry{a4paper, left=2cm, right=2cm, top=2.5cm, bottom=2.5cm}
-
 \usepackage{subfiles}
 \usepackage{multicol}
 \usepackage[utf8]{inputenc} 
 \usepackage[russian]{babel}
 \usepackage{setspace}
+\usepackage{titlesec}
+
+% Format section headings
+\titleformat{\section}{\normalfont\Large\bfseries}{}{0em}{}
+\titlespacing*{\section}{0pt}{1em}{0.5em}
 
 \title{Lab6}
 \author{Mike Dobkes}
 \date{6th of December 2025}
 
 \begin{document}
-\begin{minipage}[t][20cm][t]{\textwidth} % height = 10cm
-\onehalfspacing
-\begin{multicols}{2} % Main part
+\begin{minipage}[t][20cm][t]{\textwidth}
+\linespread{1.5}
+\begin{multicols}{2}
 
-% Initial chapter
+% Initial section
 {
 \raggedright
-\textbf{\chapter{Ответы, указания, решения}}\newline
+\section*{Ответы, указания, решения}
 \noindent\rule{\columnwidth}{1pt}
 }
-\setlength{\parindent}{1em} % Restore tab before 1st line of paragraph 
+\setlength{\parindent}{1em}
 \subfile{introduction}
 
-% Trojan chapter
+% Trojan section
 {
 \raggedright
-\textbf{\chapter{К статье «Троянцы»}}
+\section*{К статье «Троянцы»}
 }
-\setlength{\parindent}{1em} % Restore tab before 1st line of paragraph
+\setlength{\parindent}{1em}
 \subfile{trojans}
 
-% Artillery and math chapter
+% Artillery and math section
 {
 \raggedright
-\textbf{\chapter{К статье «Артиллерия и математика»}}
+\section*{К статье «Артиллерия и математика»}
 }
-\setlength{\parindent}{1em} % Restore tab before 1st line of paragraph
+\setlength{\parindent}{1em}
 \subfile{artillery_and_math}
 
-%Antie chapter
+% Antie section
 {
 \raggedright
-\textbf{\chapter{К статье «Антье»}}
+\section*{К статье «Антье»}
 }
-\setlength{\parindent}{1em} % Restore tab before 1st line of paragraph
+\setlength{\parindent}{1em}
 \subfile{antie}
 
 \end{multicols}
