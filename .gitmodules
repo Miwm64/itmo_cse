@@ -1,3 +1,4 @@
 [submodule "programming/lab3/itmo-programming-lab3"]
 	path = programming/lab3/itmo-programming-lab3
 	url = https://github.com/Miwm64/itmo-programming-lab3
+	branch=master
