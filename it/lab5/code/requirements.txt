@@ -1,0 +1,2 @@
+polars~=1.35.0
+fastexcel~=0.15.0
