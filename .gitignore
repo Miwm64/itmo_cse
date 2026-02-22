@@ -3,3 +3,4 @@
 **/.idea
 **/.compiled
 **/__pycache__
+**/nohup.out
