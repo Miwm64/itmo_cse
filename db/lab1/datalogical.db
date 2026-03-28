@@ -1,0 +1,205 @@
+// Enums
+
+Enum prison_conditions {
+  low
+  medium
+  high
+  maximum
+}
+
+Enum location_climate {
+  rainy
+  sunny
+  windy
+}
+
+Enum factor_type {
+  mutiny
+}
+
+Enum accusation_type {
+  kill
+  robbery
+  mutiny
+}
+
+Enum punishment_type {
+  imprisonment
+  hanging
+}
+
+Enum event_role {
+  leader
+  opposition_leader
+  supporter
+  opponent
+}
+
+Enum event_consequence {
+  death
+}
+
+Enum relationship_type {
+  anger
+  hate
+  friendship
+  love
+}
+
+// Стержневые сущности
+
+Table human {
+  id integer [primary key]
+  is_sane boolean
+  courage smallint
+  job varchar(50)
+}
+
+Table prison {
+  id integer [primary key]
+  conditions prison_conditions
+  location_id integer [not null]
+}
+
+Table event {
+  id integer [primary key]
+  is_successfull boolean
+  location_id integer [not null]
+}
+
+Table court {
+  id integer [primary key]
+  name varchar(50)
+  location_id integer [not null]
+}
+
+Table factor {
+  id integer [primary key]
+  type factor_type
+  start_time timestamp
+  end_time timestamp
+}
+
+Table location {
+  id integer [primary key]
+  name varchar
+  climate location_climate
+}
+
+
+
+// Характеристические сущности
+
+Table name {
+  human_id integer [primary key]
+  first varchar(50)
+  middle varchar(50)
+  last varchar(50)
+}
+
+Table accusation {
+  id integer [primary key]
+  human_id integer [not null]
+  type accusation_type
+  accused_time timestamp
+  court_id integer [not null]
+}
+
+Table punishment {
+  id integer [primary key]
+  accusation_id integer [not null]
+  type punishment_type
+  execution_time timestamp
+}
+
+Table wound {
+  id integer [primary key]
+  human_id integer [not null]
+  is_fatal boolean
+  dt timestamp
+  is_cured boolean
+}
+
+
+// Ассоциативные сущности
+
+Table event_people {
+  event_id integer [not null]
+  human_id integer [not null]
+  role event_role
+  consequence event_consequence
+
+  primary key (event_id, human_id)
+}
+
+Table relationships {
+  human1_id integer [not null]
+  human2_id integer [not null]
+  type relationship_type
+
+  primary key (human1_id, human2_id)
+}
+
+Table factor_accusation {
+  factor_id integer [not null]
+  accusation_id integer [not null]
+
+  primary key (factor_id, accusation_id)
+}
+
+Table factor_punishment {
+  factor_id integer [not null]
+  punishment_id integer [not null]
+
+  primary key (factor_id, punishment_id)
+}
+
+Table court_judge {
+  court_id integer [not null]
+  human_id integer [not null]
+
+  primary key (court_id, human_id)
+}
+
+Table prison_human {
+  human_id integer [not null]
+  prison_id integer [not null]
+  imprisoned_time timestamp
+  released_time timestamp
+
+  primary key (human_id, prison_id, imprisoned_time)
+}
+
+
+
+
+Ref: prison.location_id > location.id
+Ref: event.location_id > location.id
+Ref: court.location_id > location.id
+
+Ref: name.human_id > human.id
+
+Ref: accusation.human_id > human.id
+Ref: accusation.court_id > court.id
+
+Ref: punishment.accusation_id > accusation.id
+
+Ref: wound.human_id > human.id
+
+Ref: event_people.event_id > event.id
+Ref: event_people.human_id > human.id
+
+Ref: relationships.human1_id > human.id
+Ref: relationships.human2_id > human.id
+
+Ref: factor_accusation.factor_id > factor.id
+Ref: factor_accusation.accusation_id > accusation.id
+
+Ref: factor_punishment.factor_id > factor.id
+Ref: factor_punishment.punishment_id > punishment.id
+
+Ref: court_judge.court_id > court.id
+Ref: court_judge.human_id > human.id
+
+Ref: prison_human.human_id > human.id
+Ref: prison_human.prison_id > prison.id
