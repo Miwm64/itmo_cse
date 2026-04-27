@@ -1,3 +1,29 @@
+DROP TABLE IF EXISTS prison_human;
+DROP TABLE IF EXISTS court_judge;
+DROP TABLE IF EXISTS factor_punishment;
+DROP TABLE IF EXISTS factor_accusation;
+DROP TABLE IF EXISTS relationships;
+DROP TABLE IF EXISTS event_people;
+DROP TABLE IF EXISTS wound;
+DROP TABLE IF EXISTS punishment;
+DROP TABLE IF EXISTS accusation;
+DROP TABLE IF EXISTS factor;
+DROP TABLE IF EXISTS event;
+DROP TABLE IF EXISTS prison;
+DROP TABLE IF EXISTS court;
+DROP TABLE IF EXISTS human;
+DROP TABLE IF EXISTS location;
+
+DROP TYPE IF EXISTS relationship_type;
+DROP TYPE IF EXISTS event_consequence;
+DROP TYPE IF EXISTS event_role;
+DROP TYPE IF EXISTS punishment_type;
+DROP TYPE IF EXISTS accusation_type;
+DROP TYPE IF EXISTS factor_type;
+DROP TYPE IF EXISTS prison_conditions;
+DROP TYPE IF EXISTS location_climate;
+
+
 
 CREATE TYPE prison_conditions AS ENUM ('low', 'medium', 'high', 'maximum');
 
