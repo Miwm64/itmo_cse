@@ -45,7 +45,6 @@ main:
 
 
 int2:	
-HLT	
     DI			; Обработка прерывания на ВУ-2
 CLA
     IN 4
@@ -64,6 +63,7 @@ CLA
 
     LD TMP2         ; AC = X AND ~TMP
     OR TMP3         ; AC = (X AND ~TMP) OR (~X AND TMP) = XOR
+
     CALL check
     ST X            ; X = XOR
     EI
@@ -103,5 +103,5 @@ load_max:
 return:
     RET
 
-min: WORD 0xFFEE
-max: WORD 0x12
+min: WORD 0xFFEF
+max: WORD 0x12 
