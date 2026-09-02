@@ -3,4 +3,4 @@
 	url = https://github.com/Miwm64/itmo-programming-lab3
 [submodule "programming/lab5/programming_lab5_8"]
 	path = programming/lab5/programming_lab5_8
-	url = git@github.com:Miwm64/programming_lab5_8.git
+	url = https://github.com/Miwm64/programming_lab5_8 
