@@ -1,13 +1,15 @@
+name: "assert hello(*()) == ('Hello\n\0World',)"
 limit: 1000
-memory_size: 8192
+memory_size: 0x1000
 memory_mapped_io:
-  0x80: [ 4294967295, 0]
+  0x80: []
   0x84: []
 reports:
-  - name: "Result"
+  - name: Result
     slice: last
-    view: "Output: {io:0x84:dec}"
-
-  - name: "Execution trace"
-    slice: all
-    view: "{pc}: {instruction:next}"
+    filter:
+      - state
+    view: |
+      numio[0x84]: {io:0x84:sym}
+    assert: |
+      numio[0x84]: "" >>> "Hello\n\0World"

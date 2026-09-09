@@ -1,2 +1,2 @@
-wrench config.s --isa acc32 -c config.yaml --stats
+wrench code.s --isa f32a -c config.yaml --stats
 
