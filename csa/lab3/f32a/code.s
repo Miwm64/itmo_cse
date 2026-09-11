@@ -1,27 +1,67 @@
     .data
 
-buf:             .byte  'Hello\n\0World!\0\0\0'
-output_addr:     .word  0x84               \ Output address where the result should be stored
+input_addr: .word 0x80
+output_addr: .word 0x84
 
+	.data
+test: .word 0
     .text
 
 _start:
-    @p output_addr b!        \ b for output
+	@p input_addr a! @ \ read first - load input addr, put in A, then write to DS 
+	!p base
 
-    lit buf a!               \ a for buf address
+	@p input_addr a! @ \ read second
+	!p exp
 
-    12                       \ hardcoded counter on T
+	power 
 
-while:
-    dup
-    if end
+	@p result \ load result to top of DS
+	@p output_addr a! ! \ output result - load output result, put in A, then write to mem[A] 
 
-    @+ 255 and
-
-    !b
-
-    -1 +
-    while ;
 
 end:
     halt
+
+
+
+\ procedure
+    .data
+base: .word 0
+exp: .word 0
+result: .word 1
+
+	.text
+
+power:	
+	@p exp
+	-1
+	+
+	
+	
+	>r
+
+power_loop:
+	multiply
+	!p result
+
+	next power_loop
+	;
+
+
+multiply:
+    @p result
+    a!
+
+    @p base
+    0
+
+    31 >r
+
+multiply_loop:
+    +*
+    next multiply_loop
+    drop
+	drop
+	a
+    ;

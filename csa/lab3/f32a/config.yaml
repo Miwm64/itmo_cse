@@ -1,8 +1,8 @@
-name: "assert hello(*()) == ('Hello\n\0World',)"
+name: "f32a"
 limit: 1000
 memory_size: 0x1000
 memory_mapped_io:
-  0x80: []
+  0x80: [3, 4]
   0x84: []
 reports:
   - name: Result
@@ -10,6 +10,9 @@ reports:
     filter:
       - state
     view: |
-      numio[0x84]: {io:0x84:sym}
-    assert: |
-      numio[0x84]: "" >>> "Hello\n\0World"
+      numio[0x84]: {io:0x84:dec}
+  - name: stacks
+    slice: last
+    view: |
+        f32a:data-stack-max:   {f32a:data-stack-max}
+        f32a:return-stack-max: {f32a:return-stack-max}
