@@ -34,6 +34,13 @@ result: .word 1
 	.text
 
 power:
+	@p exp
+	-if power_check
+
+exponent_neg:
+	-1 !p result
+	;
+
 power_check:
 	@p exp
 	if exponent_zero
@@ -43,7 +50,7 @@ power_check:
 
 	@p base
 	-1 +
-	if base_one 
+	if base_one
 
 power_do:	
 	@p exp
