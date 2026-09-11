@@ -24,7 +24,7 @@ end:
     halt
 
 
-
+.org 0x100
 \ procedure
     .data
 base: .word 0
@@ -33,13 +33,39 @@ result: .word 1
 
 	.text
 
-power:	
+power:
+power_check:
+	@p exp
+	if exponent_zero
+	
+	@p base
+	if base_zero
+
+	@p base
+	-1 +
+	if base_one 
+
+power_do:	
 	@p exp
 	-1
 	+
 	
 	
-	>r
+	>r	
+
+	power_loop ;	
+
+exponent_zero:
+	1 !p result
+	;
+	
+base_one:
+	1 !p result
+	;
+
+base_zero:
+	0 !p result
+	;
 
 power_loop:
 	multiply
