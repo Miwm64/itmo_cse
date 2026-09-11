@@ -1,18 +1,15 @@
-name: "f32a"
-limit: 1000
+name: "f32a - power"
+limit: 2000
 memory_size: 0x1000
 memory_mapped_io:
-  0x80: [3, 4]
+  0x80: [2, 3]
   0x84: []
 reports:
   - name: Result
     slice: last
-    filter:
-      - state
     view: |
+      numio[0x80]: {io:0x80:dec}
       numio[0x84]: {io:0x84:dec}
-  - name: stacks
-    slice: last
-    view: |
-        f32a:data-stack-max:   {f32a:data-stack-max}
-        f32a:return-stack-max: {f32a:return-stack-max}
+    assert: |
+      numio[0x80]: [] >>> []
+      numio[0x84]: [] >>> [8]
