@@ -1,0 +1,21 @@
+name: "assert strstr_cstr('hello world|world\n') == ([6], '')"
+limit: 2000
+memory_size: 0x1000
+memory_mapped_io:
+  0x80: [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100, 124, 119, 111, 114, 108, 100, 10]
+  0x84: []
+reports:
+  - name: Check results
+    slice: last
+    filter:
+      - state
+    view: |
+      numio[0x80]: {io:0x80:dec}
+      numio[0x84]: {io:0x84:dec}
+      symio[0x80]: {io:0x80:sym}
+      symio[0x84]: {io:0x84:sym}
+    assert: |
+      numio[0x80]: [] >>> []
+      numio[0x84]: [] >>> [6]
+      symio[0x80]: "" >>> ""
+      symio[0x84]: "" >>> "?"
