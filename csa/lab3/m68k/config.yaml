@@ -12,7 +12,10 @@ reports:
   - name: Result
     slice: last
     view: |
-      buffer: {memory:0x100:0x120}
+      result_string: {memory:0x0:0x40}
+      word_buffer: {memory:0x360:0x390}
+      count_buffer: {memory:0x390:0x400}
+      buffer: {memory:0x400:0x450}
       numio[0x80]: {io:0x80:dec}
       numio[0x84]: {io:0x84:dec}
       numio[0x84]: {io:0x84:sym}

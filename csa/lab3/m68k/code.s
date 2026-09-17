@@ -1,7 +1,11 @@
 	.data
+	.org 0x0
+result_buffer: .byte '________________________________________________________________'
+
+	.data
 	.org 0x100
-; D0-D2, A0-A1 caller saved
-; D3-D7, A0-A7 callee saved
+; D0-D2, A0-A2 caller saved
+; D3-D7, A3-A7 callee saved
 input_address: .word 0x80
 output_address: .word 0x84
 stack_top:       .word  0x500     
@@ -12,21 +16,27 @@ _start:
 	movea.l  stack_top, A7
     movea.l  (A7), A7
 	
+	; call read_line
 	movea.l input_address, A0
 	movea.l (A0), A0
 	movea.l line_buffer, A1
 	jsr read_line
 	
+	; call count_words
 	movea.l line_buffer, A0
 	jsr count_words
-	movea.l count_array, A0
+	
 	movea.l output_address, A1
 	movea.l (A1), A1
-	move.l 3, D0
-	jsr print_result
+
+	cmp.l 0, D0
+	bmi print_error
+	movea.l result_buffer, A2
+	jsr print_save_result
 	
 	halt
-
+print_error:
+	move.l D0, (A1)	
 ; read_line(input_address, buffer_address) -> int
 ; arg A0 - input address
 ; arg A1 - buffer address
@@ -61,34 +71,77 @@ read_char:
 
 	.text
 	.org 0x200
-; count_words(buffer_address) -> amount of unique words, address of count_array
+; count_words(buffer_address, size) -> amount of unique words, address of count_array
 ; arg A0 - buffer address
+; arg D0 - size of array
 ; ret D0 - status/amount
 ; ret A0 - address of count_array
 ; counts amounts of unique word occurences
 ; if any length of word > 3 -> ret -1	
 count_words:
+; current word - D0
+; curr char - D1
+; symbols left - D7
+	move.l D7, -(A7)
+	move.l D0, D7
+	xor.l D0, D0
+	xor.l D1, D1
+count_words_loop:
+	cmp.l 0, D7
+	beq last_word ; if symbols ended -> process ramain
+
+	move.b (A0)+, D1 ; load another symbol
+	sub.l 1, D7	
+
+	; if newline -> process word
+	cmp.b ' ', D1
+	beq call_process_word
+	cmp.b '.', D1
+	beq call_process_word
+	cmp.b ',', D1
+	beq call_process_word 
 	
+	; if another character -> add it
+	lsl.l 8, D0
+	add.b D1, D0
 
+	; if word size > 3 -> return -1
+	cmp.l 0xFFFFFF, D0
+	bgt too_long	
 
+call_process_word:
+	xor.l D0, D0
+	jmp count_words_loop
 
+last_word:
+	jmp done
 
+too_long:
+	move.l -1, D0
+	
+done:
+	movea.l count_array, A0
+	move.l (A7)+, D7	
 	rts
 
-; print_result(length, array_address, output_address) -> void
+; print_result(length, array_address, output_address, buffer_address) -> void
 ; arg A0 - array address
 ; arg A1 - output_address
+; arg A2 - buffer address
 ; arg D0 - length of array
 ; prints array with spaces
-print_result:
-print_loop:
+print_save_result:
+print_save_loop:
 	cmp.l 0, D0
-	beq print_ret
-	move.b (A0)+, (A1)
+	beq print_save_ret
+	move.b (A0), (A1)	
+	move.b (A0)+, (A2)+
+
 	move.b ' ', (A1)
+	move.b ' ', (A2)+
 	sub.l 1, D0
-	jmp print_loop
-print_ret:
+	jmp print_save_loop
+print_save_ret:
 	rts
 
 
