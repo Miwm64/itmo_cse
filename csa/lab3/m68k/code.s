@@ -160,10 +160,7 @@ count_words_ret:
 
 
     ; process_word(word) -> status
-    ; arg D0 - packed word (up to 3 chars in the low bytes), 0 = empty word (skip)
-    ; ret D0 - status: 0 = ok, -1 = would be a 13th unique word
-    ; uses/updates D6 - count of unique words so far (persists across calls)
-    ; scratch: D1, D2, A1, A2 (caller-saved, not restored)
+    ; arg D0 - packed word    ; ret D0 - status: 0 = ok, -1 = would be a 13th unique word
 process_word:
     cmp.l    0, D0
     beq      process_word_ok                 ; empty word (e.g. two separators in a row) -> nothing to do
