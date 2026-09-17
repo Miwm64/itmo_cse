@@ -5,11 +5,6 @@
 result_buffer:   .byte  '________________________________________________________________'
 
 
-
-    .data
-
-.org             0x100
-
     ; D0-D2, A0-A2 caller saved
 
     ; D3-D7, A3-A7 callee saved
@@ -20,6 +15,11 @@ output_address:  .word  0x84
 
 stack_top:       .word  0x600
 
+
+
+    .data
+
+.org             0x90
 
 
     .text
@@ -84,7 +84,7 @@ read_char:
 
     .text
 
-    .org     0x200
+    .org     0x130
 
     ; count_words(buffer_address, size) -> amount of unique words, address of count_array
     ; arg A0 - buffer address
@@ -238,19 +238,19 @@ print_save_ret:
 
     .data
 
-.org             0x460
+.org             0x2b0
 
 word_array:      .word  0x1
 
     .data
 
-.org             0x490
+.org             0x300
 
 count_array:     .byte  0x1
 
     .data
 
-.org             0x500
+.org             0x310
 
 line_buffer:     .byte  '_'
 
