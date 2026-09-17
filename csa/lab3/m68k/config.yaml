@@ -1,0 +1,19 @@
+name: "m68k - text_word_counter"
+limit: 2000
+memory_size: 0x1000
+memory_mapped_io:
+  0x80: [97, 32, 98, 98, 32, 99, 99, 99, 32, 97, 32, 99, 99, 99, 32, 97, 10]  
+  0x84: []
+reports:
+  - name: step-by-step
+    slice: all
+    view: |
+      {pc}:	{D0}-{D1} ; {A0}-{A1} {instruction:next}	{pc:label}
+  - name: Result
+    slice: last
+    view: |
+      buffer: {memory:0x100:0x120}
+      numio[0x80]: {io:0x80:dec}
+      numio[0x84]: {io:0x84:dec}
+      numio[0x84]: {io:0x84:sym}
+
