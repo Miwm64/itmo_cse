@@ -1,0 +1,15 @@
+name: "m68k - text_word_counter"
+limit: 2000
+memory_size: 0x1000
+memory_mapped_io:
+  0x80: [111, 114, 100, 10]  
+  0x84: []
+reports:
+  - name: Result
+    slice: last
+    view: |
+      result_string: {memory:0x0:0x40}
+      numio[0x80]: {io:0x80:dec}
+      numio[0x84]: {io:0x84:dec}
+      numio[0x84]: {io:0x84:sym}
+
