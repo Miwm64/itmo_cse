@@ -17,12 +17,8 @@ stack_top:       .word  0x600
 
 
 
-    .data
-
-.org             0x90
-
-
     .text
+.org             0x90
 
 _start:
     ; stack init
