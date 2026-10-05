@@ -1,8 +1,8 @@
 # Variant: acc32-harv[-microcode]
 
 ## DataPath
-![image](./datapath.jpg)
+![image](./datapath.png)
 
 ## Control Unit
-![image](./control_unit.jpg)
+![image](./control_unit.png)
 
